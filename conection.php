@@ -3,10 +3,10 @@
 class Connection
 {
 
-    private $host = 'localhost';
-    private $dbname = 'db_Hardware';
-    private $user = 'root';
-    private $password = '';
+    private $host = '127.0.0.1:3312';
+    private $dbname = 'db_hardware';
+    private $user = 'admin';
+    private $password = 'dezembro88';
 
 
 
