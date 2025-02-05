@@ -4,8 +4,8 @@ class Entrada {
 
 private $id;
 private $equipamento;
-private $patrimonio;
 private $responsavel;
+private $patrimonio;
 private $data_entrada;
 
 public function __get($atribute) {
