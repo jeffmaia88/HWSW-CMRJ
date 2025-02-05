@@ -56,13 +56,14 @@
 							<div class="col">
 								<h4>Entrada Patrimônio</h4>
 								<hr />
-
-								<div class="row mb-3 d-flex align-items-center tarefa">     <!-- linha -->
-									<div class="col-sm-6"> <!-- coluna da esquerda -->
-                                        <form method="post" action="entrada_controller.php">
+                                
+                                <form method="post" action="entrada_controller.php">
+								<div class="row mb-3 d-flex tarefa">     <!-- linha -->
+                                    
+									    <div class="col-sm-6"> <!-- coluna da esquerda -->                                       
                                             <div class="form-group">
                                                 <label for="Equip"> Equipamento: </label>
-                                                <select class="custom-select inputs" name="equipam" id="Equip">
+                                                <select class="custom-select inputs" name="equipamento" id="Equip">
                                                     <option selected>Equipamento</option>
                                                     <option value="1">Computador</option>
                                                     <option value="2">Monitor</option>
@@ -72,41 +73,25 @@
                                             
                                             <div class="form-group">
                                                 <label for="Patrim">Patrimônio: </label>
-                                                <input type="text" class="form-control inputs" name="patrimonio" id="Equip">
+                                                <input type="text" class="form-control inputs" name="patrimonio" id="patrimonio">
                                             </div>
-                                                                    
+                                        
                                     </div>
-
                                     <div class="col-sm-6"> <!-- coluna da direita -->
                                                                                     
-                                            <div class="form-group">
-                                                <label for="Respons">Responsável</label>
-                                                <input type="text" name="respons" class="form-control inputs" id="Respons">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Respons">Data: </label>
-                                                <input type="date" class="form-control inputs" name="data" id="Respons">
-                                            </div>
-                                            <button class="btn btn-success ml-auto mt-4">Cadastrar</button>
-                                        </form>
-
-                                        
-
+                                                <div class="form-group">
+                                                    <label for="Respons">Responsável</label>
+                                                    <input type="text" name="responsavel" class="form-control inputs" id="responsavel">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="Respons">Data: </label>
+                                                    <input type="date" class="form-control inputs" name="data_entrada" id="data_entrada">
+                                                </div>
+                                                <button class="btn btn-success ml-auto mt-4">Cadastrar</button>           
+                                                                                                                                                     
                                     </div>
-                                    
-                                </div>
-                                
-
-
-                                
-									 
-
-								
-									
-									
-								
-							</div>
-						</div>
+                                    </form>                             
+                               	</div>
 					</div>
 				</div>
 
