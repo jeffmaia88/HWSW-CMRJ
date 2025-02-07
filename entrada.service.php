@@ -22,7 +22,10 @@ class EntradaService {
 
     public function read()
     {
-
+		$query = 'select id,equipamento,patrimonio,responsavel,data_entrada from tb_entrada';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->execute();
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function update()
@@ -34,6 +37,16 @@ class EntradaService {
     {
 
     }
+
+	public function insertExit(){
+		$query = 'insert into tb_saida(equipamento,patrimonio,responsavel,data_saida)values(:equipamento, :patrimonio, :responsavel, :data_saida)';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(':equipamento',$this->entrada->__get('equipamento'));
+		$stmt->bindValue(':patrimonio',$this->entrada->__get('patrimonio'));
+		$stmt->bindValue(':responsavel',$this->entrada->__get('responsavel'));
+		$stmt->bindValue(':data_saida',$this->entrada->__get('data_saida'));
+		$stmt->execute();
+	}
 }
 
 
