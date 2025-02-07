@@ -40,10 +40,10 @@
                             <a href="entrada.php">Entrada Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
-                            <a href="#">Saída Patrimônio</a>
+                            <a href="saida.php">Saída Patrimônio</a>
                         </li>
                         <li class=" list-group-item ">
-                            <a href="#">Listar Estoque </a>
+                            <a href="listar.php">Listar Estoque </a>
                         </li>
 
                     </ul>
@@ -57,43 +57,46 @@
 								<h4>Saída Patrimônio</h4>
 								<hr />
 
-								<div class="row mb-3 d-flex align-items-center tarefa">     <!-- linha -->
-									<div class="col-sm-6"> <!-- coluna da esquerda -->
-                                        <form>
-                                            <div class="form-group">
-                                                <label for="Equip"> Equipamento: </label>
-                                                <select class="custom-select inputs" id="Equip">
-                                                    <option selected>Equipamento</option>
-                                                    <option value="1">Computador</option>
-                                                    <option value="2">Monitor</option>
-                                                    <option value="3">Impressora</option>
-                                                </select>
-                                            </div>
-                                            
-                                            <div class="form-group">
-                                                <label for="Patrim">Patrimônio: </label>
-                                                <input type="text" class="form-control inputs" id="Equip">
-                                            </div>
-                                        </form>                             
-                                    </div>
+                                <form method="POST" action="entrada.controller.php?action=remove">
+                                    <div class="row mb-3 d-flex align-items-center tarefa">     <!-- linha -->
 
-                                    <div class="col-sm-6"> <!-- coluna da direita -->
-                                        <form>                                            
+                                        <div class="col-sm-6"> <!-- coluna da esquerda -->
                                             <div class="form-group">
-                                                <label for="Respons">Responsável</label>
-                                                <input type="text" class="form-control inputs" id="Respons">
+                                                    <label for="equipamento"> Equipamento: </label>
+                                                    <select class="custom-select inputs" name="equipamento" id="Equip">
+                                                        <option selected>Equipamento</option>
+                                                        <option value="computador">Computador</option>
+                                                        <option value="monitor">Monitor</option>
+                                                        <option value="impressora">Impressora</option>
+                                                    </select>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="Respons">Data: </label>
-                                                <input type="date" class="form-control inputs" id="Respons">
-                                            </div>
-                                        </form>
+                                                
+                                                <div class="form-group">
+                                                    <label for="Patrimonio">Patrimônio: </label>
+                                                    <input type="text" class="form-control inputs" name="patrimonio" id="patrimonio">
+                                                </div>
+                                                                                                
+                                                                      
+                                        </div>
 
+                                        <div class="col-sm-6"> <!-- coluna da direita -->
+                                                                                    
+                                            <div class="form-group">
+                                                <label for="responsavel">Responsável</label>
+                                                <input type="text" class="form-control inputs" name="responsavel" id="responsavel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="data_saida">Data: </label>
+                                                <input type="date" class="form-control inputs" name="data_saida" id="data_saida">
+                                            </div>                                       
+
+                                        </div>
+                                        <button type="button" class="btn btn-danger ml-auto mt-4">Remover</button>
                                         
-
                                     </div>
-                                    <button type="button" class="btn btn-danger ml-auto mt-4">Remover</button>
-                                </div>
+                                </form>
+
+                                    
                                 
 
 
@@ -110,6 +113,14 @@
 				</div>
 
             </div>
+
+            <?php if ( isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
+                        <div class="bg-primary pt-2 text-white d-flex justify-content-center">
+                            <h5>Saída de Equipamento Realizada com Sucesso</h5>
+                        </div>
+                <?php } ?>
+
+
         </div>
 
 

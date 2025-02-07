@@ -37,13 +37,13 @@
                 <div class="col-md-3">
                     <ul class="list-group">
                         <li class="list-group-item ">
-                            <a href="#">Entrada Patrimônio</a>
+                            <a href="entrada.php">Entrada Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
                             <a href="saida.php">Saída Patrimônio</a>
                         </li>
                         <li class=" list-group-item ">
-                            <a href="#">Listar Estoque </a>
+                            <a href="listar.php">Listar Estoque </a>
                         </li>
 
                     </ul>
@@ -57,7 +57,7 @@
 								<h4>Entrada Patrimônio</h4>
 								<hr />
                                 
-                                <form method="post" action="entrada_controller.php">
+                                <form method="post" action="entrada_controller.php?action=insert">
 								<div class="row mb-3 d-flex tarefa">     <!-- linha -->
                                     
 									    <div class="col-sm-6"> <!-- coluna da esquerda -->                                       
@@ -65,9 +65,9 @@
                                                 <label for="Equip"> Equipamento: </label>
                                                 <select class="custom-select inputs" name="equipamento" id="Equip">
                                                     <option selected>Equipamento</option>
-                                                    <option value="1">Computador</option>
-                                                    <option value="2">Monitor</option>
-                                                    <option value="3">Impressora</option>
+                                                    <option value="computador">Computador</option>
+                                                    <option value="monitor">Monitor</option>
+                                                    <option value="impressora">Impressora</option>
                                                 </select>
                                             </div>
                                             
@@ -96,6 +96,14 @@
 				</div>
 
             </div>
+
+                <?php if ( isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
+                        <div class="bg-primary pt-2 text-white d-flex justify-content-center">
+                            <h5>Equipamento Incluído com Sucesso</h5>
+                        </div>
+                <?php } ?>
+                
+                
         </div>
 
 
