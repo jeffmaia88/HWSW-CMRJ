@@ -73,7 +73,7 @@ require 'entrada_controller.php';
                                 <h4>Listagem de Patrimônio</h4>
                                 <hr />
 
-                                <div class="d-flex ">
+                                <div class="d-flex pt-5 ">
                                     <div class="ml-auto">
                                         <input type="text" class="form-control" placeholder="buscar patrimônio"
                                             id="search" />
@@ -83,7 +83,7 @@ require 'entrada_controller.php';
                                     </button>
                                 </div>
 
-                                <table class="table table-striped mt-5">
+                                <table class="table table-striped mt-3">
                                     <tr>
                                         <th>Equipamento</th>
                                         <th>Patrimônio</th>

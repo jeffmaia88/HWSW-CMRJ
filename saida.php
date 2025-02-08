@@ -9,6 +9,12 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
     <title>Estoque DTI - Página Inicial</title>
 </head>
 
@@ -56,75 +62,70 @@
                 <div class="col-md-9">
                     <div class="container pagina">
                         <div class="row">
-                            <div class="col">
+                            <div class="col-md-12">
                                 <h4>Saída Patrimônio</h4>
                                 <hr />
 
-                                <form method="post" action="entrada_controller.php?action=remove">
-                                    <div class="row mb-3 d-flex align-items-center tarefa"> <!-- linha -->
-
-                                        <div class="col-sm-6"> <!-- coluna da esquerda -->
-                                            <div class="form-group">
-                                                <label for="equipamento"> Equipamento: </label>
-                                                <select class="custom-select inputs" name="equipamento" id="Equip">
-                                                    <option selected>Equipamento</option>
-                                                    <option value="computador">Computador</option>
-                                                    <option value="monitor">Monitor</option>
-                                                    <option value="impressora">Impressora</option>
-                                                </select>
+                                <div class="row pt-5">
+                                    <div class=" col-md-12 ">
+                                        <form method="post" action="entrada_controller.php?action=remove">
+                                            <div class="d-flex ">
+                                                <div class="ml-auto">
+                                                    <input type="text" class="form-control"
+                                                        placeholder="buscar patrimônio" id="search" />
+                                                </div>
+                                                <button id="search-button" type="button" class="btn btn-primary">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
                                             </div>
+                                        </form>
+                                    </div>
 
-                                            <div class="form-group">
-                                                <label for="Patrimonio">Patrimônio: </label>
-                                                <input type="text" class="form-control inputs" name="patrimonio"
-                                                    id="patrimonio">
-                                            </div>
+                                </div>
 
+                                <div class="row mt-3">
+                                    <div class="col-md-12">
+                                        <table class="table table-striped">
+                                            <tr>
+                                                <th>Equipamento</th>
+                                                <th>Patrimônio</th>
+                                                <th>Data de entrada</th>
+                                            </tr>
 
-                                        </div>
-
-                                        <div class="col-sm-6"> <!-- coluna da direita -->
-
-                                            <div class="form-group">
-                                                <label for="responsavel">Responsável</label>
-                                                <input type="text" class="form-control inputs" name="responsavel"
-                                                    id="responsavel">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="data_saida">Data: </label>
-                                                <input type="date" class="form-control inputs" name="data_saida"
-                                                    id="data_saida">
-                                            </div>
-
-                                        </div>
-                                        <button class="btn btn-danger ml-auto mt-4">Remover</button>
+                                        </table>
 
                                     </div>
-                                </form>
 
 
-
-
-
-
-
-
-
+                                </div>
 
 
 
                             </div>
+
+
+
+
+
+
+
+
+
+
+
+
                         </div>
                     </div>
                 </div>
-
             </div>
 
-            <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
-                <div class="bg-primary pt-2 text-white d-flex justify-content-center">
-                    <h5>Saída de Equipamento Realizada com Sucesso</h5>
-                </div>
-            <?php } ?>
+        </div>
+
+        <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
+            <div class="bg-primary pt-2 text-white d-flex justify-content-center">
+                <h5>Saída de Equipamento Realizada com Sucesso</h5>
+            </div>
+        <?php } ?>
 
 
         </div>

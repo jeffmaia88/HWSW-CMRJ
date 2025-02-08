@@ -24,11 +24,14 @@
 }
 
 #search {
-    border-color: 1px solid red;
-    border-radius: 20px;
+
+    border-radius: 12px;
+
+
 }
 
 #search-button {
-    border-color: 1px solid red;
-    border-radius: 20px;
+
+    border-radius: 12px;
+
 }
