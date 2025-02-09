@@ -68,13 +68,13 @@
 
                                 <div class="row pt-5">
                                     <div class=" col-md-12 ">
-                                        <form method="post" action="entrada_controller.php?action=remove">
+                                        <form method="post" action="entrada_controller.php?action=recover">
                                             <div class="d-flex ">
                                                 <div class="ml-auto">
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" name="busca" class="form-control"
                                                         placeholder="buscar patrimônio" id="search" />
                                                 </div>
-                                                <button id="search-button" type="button" class="btn btn-primary">
+                                                <button id="search-button" class="btn btn-primary">
                                                     <i class="fa-solid fa-magnifying-glass"></i>
                                                 </button>
                                             </div>
@@ -91,6 +91,25 @@
                                                 <th>Patrimônio</th>
                                                 <th>Data de entrada</th>
                                             </tr>
+
+
+
+
+                                            <?php if (isset($_GET['recover']) && $_GET['recover'] == 1) {
+
+                                                $action = 'recover';
+                                                require 'entrada_controller.php'; ?>
+
+                                                <td><?= $listagem->equipamento ?></td>
+                                                <td><?= $listagem->patrimonio ?></td>
+                                                <td><?= $listagem->data_entrada ?></td>
+                                                <?php ?>
+                                            <?php } ?>
+
+
+
+
+
 
                                         </table>
 

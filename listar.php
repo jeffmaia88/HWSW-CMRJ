@@ -1,6 +1,6 @@
 <?php
 
-$action = 'recover';
+$action = 'recoverAll';
 require 'entrada_controller.php';
 
 ?>
