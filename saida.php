@@ -68,7 +68,7 @@
 
                                 <div class="row pt-5">
                                     <div class=" col-md-12 ">
-                                        <form method="post" action="entrada_controller.php?action=recover">
+                                        <form method="post" action="search.php">
                                             <div class="d-flex ">
                                                 <div class="ml-auto">
                                                     <input type="text" name="search" class="form-control"
@@ -85,16 +85,7 @@
 
                                 <div class="row mt-3">
                                     <div class="col-md-12">
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>Equipamento</th>
-                                                <th>Patrimônio</th>
-                                                <th>Data de entrada</th>
-                                            </tr>
-
-
-
-
+                                        
                                         </table>
 
                                     </div>
@@ -105,17 +96,7 @@
 
 
                             </div>
-
-
-
-
-
-
-
-
-
-
-
+                               
 
                         </div>
                     </div>
@@ -124,13 +105,7 @@
 
         </div>
 
-        <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
-            <div class="bg-primary pt-2 text-white d-flex justify-content-center">
-                <h5>Saída de Equipamento Realizada com Sucesso</h5>
-            </div>
-        <?php } ?>
-
-
+    
         </div>
 
 
@@ -147,6 +122,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-</body>
 
+    
 </html>
