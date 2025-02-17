@@ -71,7 +71,7 @@
                                         <form method="post" action="entrada_controller.php?action=recover">
                                             <div class="d-flex ">
                                                 <div class="ml-auto">
-                                                    <input type="text" name="busca" class="form-control"
+                                                    <input type="text" name="search" class="form-control"
                                                         placeholder="buscar patrimônio" id="search" />
                                                 </div>
                                                 <button id="search-button" class="btn btn-primary">
@@ -91,22 +91,6 @@
                                                 <th>Patrimônio</th>
                                                 <th>Data de entrada</th>
                                             </tr>
-
-
-
-
-                                            <?php if (isset($_GET['recover']) && $_GET['recover'] == 1) {
-
-                                                $action = 'recover';
-                                                require 'entrada_controller.php'; ?>
-
-                                                <td><?= $listagem->equipamento ?></td>
-                                                <td><?= $listagem->patrimonio ?></td>
-                                                <td><?= $listagem->data_entrada ?></td>
-                                                <?php ?>
-                                            <?php } ?>
-
-
 
 
 

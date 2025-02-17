@@ -1,6 +1,6 @@
 <?php 
 
-require_once '../../HWSW-CMRJ/entrada_controller.php';
+require_once '../../HWSW-CMRJ-private/entrada_controller.php';
 
 
 ?>
