@@ -1,8 +1,8 @@
 <?php
 
-require "../../HWSW-CMRJ/entrada.model.php";
-require "../../HWSW-CMRJ/entrada.service.php";
-require "../../HWSW-CMRJ/connection.php";
+require "../../HWSW-CMRJ-private/entrada.model.php";
+require "../../HWSW-CMRJ-private/entrada.service.php";
+require "../../HWSW-CMRJ-private/connection.php";
 
 
 
@@ -42,24 +42,44 @@ if ($action == 'insert') {
 
 
 
-    $listar = new Entrada();
+    $search = new Entrada();
     $connection = new connection();
+    $key = new Entrada();
 
-    $listar->__set('patrimonio', $_POST['busca']);
+    $key->__set('patrimonio', $_POST['search']);
 
-    echo '<pre>';
-    print_r($_POST['busca']);
-    echo '<pre>';
+    $entradaService = new EntradaService($connection, $search);
 
-    $entradaService = new EntradaService($connection, $listar);
-
-    $listagem = $entradaService->read();
-    header('location: saida.php?recover=1');
-
+    $AllResult = $entradaService->readAll();
 
     echo '<pre>';
-    print_r($listagem);
+    print_r($AllResult);
     echo '<pre>';
+
+    echo '<pre>';
+    print_r($key);
+    echo '<pre>';
+   
+
+    foreach($AllResult as $index => $item) {
+        if ($item->patrimonio == $key->patrimonio) {
+
+            $search->equipamento = $item->equipamento;
+            $search->patrimonio = $item->patrimonio;
+            $search->data_entrada = $item->data_entrada;
+            break;
+        }
+    }
+
+
+
+    echo '<pre>';
+    print_r($search);
+    echo '<pre>';
+   
+
+
+    
 
 
 }
