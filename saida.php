@@ -1,3 +1,14 @@
+<script>
+
+
+    function remove(id) {
+        location.href = 'entrada_controller.php?action=remove&id=' + id;
+    }
+
+
+</script>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -90,7 +101,6 @@
                                         <?php if (isset($_GET['recover']) && $_GET['recover'] == 1 && $_GET['id'] != null) { ?>
 
 
-
                                             <table class="table table-striped">
                                                 <tr>
                                                     <th>Equipamento</th>
@@ -103,16 +113,18 @@
                                                 <td><?= $_GET['patrim'] ?></td>
                                                 <td><?= $_GET['resp'] ?></td>
                                                 <td><?= $_GET['data'] ?></td>
-                                                <td onclick="remove(<?php $_GET['id'] ?>)" id="key">
-                                                    <?= $_GET['id'] ?>
-                                                    <i class="fa-solid fa-trash pl-4"></i>
-                                                </td>
+                                                <td><i class="fa-solid fa-trash pl-4"
+                                                        onclick="remove(parseInt(<?= $_GET['id'] ?>))" ?></i> </td>
+
+
+
+
+
+
 
                                             </table>
 
                                         <?php } ?>
-
-
 
                                     </div>
 
@@ -153,16 +165,7 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 
-<script>
 
-    id = document.getElementById(key).value;
-
-    function remove(id) {
-        location.href = 'entrada_controller.php?action=remove&id=' + id;
-    }
-
-
-</script>
 
 
 </html>
