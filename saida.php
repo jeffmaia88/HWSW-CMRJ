@@ -68,7 +68,7 @@
 
                                 <div class="row pt-5">
                                     <div class=" col-md-12 ">
-                                        <form method="post" action="search.php">
+                                        <form method="post" action="entrada_controller.php?action=recover">
                                             <div class="d-flex ">
                                                 <div class="ml-auto">
                                                     <input type="text" name="search" class="form-control"
@@ -85,8 +85,36 @@
 
                                 <div class="row mt-3">
                                     <div class="col-md-12">
-                                        
-                                        </table>
+
+
+                                        <?php if (isset($_GET['recover']) && $_GET['recover'] == 1) { ?>
+
+
+                                            <?php $search = $_GET['id']
+
+
+                                                ?>
+
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <th>Equipamento</th>
+                                                    <th>Patrimônio</th>
+                                                    <th>Responsável</th>
+                                                    <th>Data de entrada</th>
+                                                    <th>Remover</th>
+                                                </tr>
+                                                <td><?= $_GET['equip'] ?> </td>
+                                                <td><?= $_GET['patrim'] ?></td>
+                                                <td><?= $_GET['resp'] ?></td>
+                                                <td><?= $_GET['data'] ?></td>
+                                                <td> <i class="fa-solid fa-trash pl-4"
+                                                        onclick="remove(<?php $_GET['id'] ?>)"> </i> </td>
+
+                                            </table>
+
+                                        <?php } ?>
+
+
 
                                     </div>
 
@@ -96,7 +124,7 @@
 
 
                             </div>
-                               
+
 
                         </div>
                     </div>
@@ -105,7 +133,7 @@
 
         </div>
 
-    
+
         </div>
 
 
@@ -123,5 +151,5 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 
-    
+
 </html>
