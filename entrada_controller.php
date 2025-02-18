@@ -81,7 +81,7 @@ if ($action == 'insert') {
 
 
 
-    /*    header('location: saida.php?remove=1');*/
+    header('location: saida.php?remove=1');
 
 
 }
