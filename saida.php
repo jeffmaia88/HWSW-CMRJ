@@ -87,13 +87,9 @@
                                     <div class="col-md-12">
 
 
-                                        <?php if (isset($_GET['recover']) && $_GET['recover'] == 1) { ?>
+                                        <?php if (isset($_GET['recover']) && $_GET['recover'] == 1 && $_GET['id'] != null) { ?>
 
 
-                                            <?php $search = $_GET['id']
-
-
-                                                ?>
 
                                             <table class="table table-striped">
                                                 <tr>
@@ -107,8 +103,10 @@
                                                 <td><?= $_GET['patrim'] ?></td>
                                                 <td><?= $_GET['resp'] ?></td>
                                                 <td><?= $_GET['data'] ?></td>
-                                                <td> <i class="fa-solid fa-trash pl-4"
-                                                        onclick="remove(<?php $_GET['id'] ?>)"> </i> </td>
+                                                <td onclick="remove(<?php $_GET['id'] ?>)" id="key">
+                                                    <?= $_GET['id'] ?>
+                                                    <i class="fa-solid fa-trash pl-4"></i>
+                                                </td>
 
                                             </table>
 
@@ -132,7 +130,11 @@
             </div>
 
         </div>
-
+        <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
+            <div class="bg-danger pt-2 text-white d-flex justify-content-center">
+                <h5>Equipamento Excluído com Sucesso</h5>
+            </div>
+        <?php } ?>
 
         </div>
 
@@ -150,6 +152,17 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
+
+<script>
+
+    id = document.getElementById(key).value;
+
+    function remove(id) {
+        location.href = 'entrada_controller.php?action=remove&id=' + id;
+    }
+
+
+</script>
 
 
 </html>

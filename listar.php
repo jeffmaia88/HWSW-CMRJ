@@ -94,10 +94,10 @@ require 'entrada_controller.php';
                                     <?php foreach ($listagem as $index => $item) { ?>
 
                                         <tr>
-                                            <td><?= $item->equipamento ?></td>
+                                            <td><?= ucfirst($item->equipamento) ?></td>
                                             <td><?= $item->patrimonio ?></td>
-                                            <td><?= $item->responsavel ?></td>
-                                            <td><?= $item->data_entrada ?></td>
+                                            <td><?= ucfirst($item->responsavel) ?></td>
+                                            <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
                                         </tr>
                                     <?php } ?>
                                 </table>
