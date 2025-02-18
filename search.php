@@ -1,30 +1,7 @@
 <?php
 
-require "../../HWSW-CMRJ-private/entrada.model.php";
-require "../../HWSW-CMRJ-private/entrada.service.php";
-require "../../HWSW-CMRJ-private/connection.php";
 
-     
-    $search = new Entrada();
-    $connection = new connection();
-    $key = new Entrada();
-
-    $key->__set('patrimonio', $_POST['search']);
-
-    $entradaService = new EntradaService($connection, $search);
-
-    $AllResult = $entradaService->readAll();
-
-       foreach($AllResult as $index => $item) {
-        if ($item->patrimonio == $key->patrimonio) {
-
-            $search->equipamento = $item->equipamento;
-            $search->patrimonio = $item->patrimonio;
-            $search->responsavel = $item->responsavel;
-            $search->data_entrada = $item->data_entrada;
-            break;
-        }
-    }    
+require "../../HWSW-CMRJ-private/entrada_controller.php";
 
 ?>
 
@@ -104,7 +81,7 @@ require "../../HWSW-CMRJ-private/connection.php";
                                                     <input type="text" name="search" class="form-control"
                                                         placeholder="buscar patrimônio" id="search" />
                                                 </div>
-                                                <button onclick="searchData()" id="search-button" class="btn btn-primary">
+                                                <button id="search-button" class="btn btn-primary">
                                                     <i class="fa-solid fa-magnifying-glass"></i>
                                                 </button>
                                             </div>
@@ -115,18 +92,7 @@ require "../../HWSW-CMRJ-private/connection.php";
 
                                 <div class="row mt-3">
                                     <div class="col-md-12">
-                                        <table class="table table-striped">
-                                            <tr>
-                                                <th>Equipamento</th>
-                                                <th>Patrimônio</th>
-                                                <th>Responsável</th>
-                                                <th>Data de entrada</th>
-                                            </tr>
-                                                <td><?=$search->equipamento?> </td>                                                        
-                                                <td><?=$search->patrimonio?></td>                                                        
-                                                <td><?=$search->responsavel?></td>                                                        
-                                                <td><?=$search->data_entrada?></td>                                                        
-                                        
+
 
 
                                         </table>
@@ -142,7 +108,7 @@ require "../../HWSW-CMRJ-private/connection.php";
 
 
 
-                                
+
                         </div>
                     </div>
                 </div>
@@ -160,12 +126,12 @@ require "../../HWSW-CMRJ-private/connection.php";
 
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+<script src=" https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
     crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 
-    
+
 </html>
