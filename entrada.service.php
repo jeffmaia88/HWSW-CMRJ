@@ -25,22 +25,21 @@ class EntradaService
 
 	public function readAll()
 	{
-		$query = 'select id,equipamento,patrimonio,responsavel,data_entrada from tb_entrada';
+		$query = 'select id,equipamento,patrimonio,responsavel,data_entrada from tb_entrada order by equipamento ASC';
 		$stmt = $this->conexao->prepare($query);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
 
-	/*public function read()
-				   {
+	public function read()
+	{
 
-					   $retorno = $this->entrada->__get('patrimonio');
-					   $query = 'select equipamento, patrimonio, data_entrada from tb_entrada where patrimonio = :busca';
-					   $stmt = $this->conexao->prepare($query);
-					   $stmt->bindValue(':busca', $retorno);
-					   $stmt->execute();
-					   return $stmt->fetch(PDO::FETCH_OBJ);
-				   }*/
+		$query = 'select id,equipamento,patrimonio,responsavel,data_entrada from tb_entrada where patrimonio = :search';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_OBJ);
+	}
 
 	public function remove()
 	{

@@ -30,7 +30,7 @@ if ($action == 'insert') {
 
 
 
-} else if ($action == 'recoverAll') {
+} else if ($action == 'readAll') {
 
     $listar = new Entrada();
     $connection = new Connection();
@@ -38,33 +38,18 @@ if ($action == 'insert') {
     $entradaService = new EntradaService($connection, $listar);
     $listagem = $entradaService->readAll();
 
-} else if ($action == 'recover') {
+} else if ($action == 'read') {
 
-    $search = new Entrada();
-    $connection = new connection();
     $key = new Entrada();
-
+    $connection = new connection();
     $key->__set('patrimonio', $_POST['search']);
 
-    $entradaService = new EntradaService($connection, $search);
+    $entradaService = new EntradaService($connection, $key);
+    $entradaService->read();
 
-    $AllResult = $entradaService->readAll();
+    $search = $entradaService->read();
 
-    foreach ($AllResult as $index => $item) {
-        if ($item->patrimonio == $key->patrimonio) {
-
-            $search->id = $item->id;
-            $search->equipamento = ucfirst($item->equipamento);
-            $search->patrimonio = $item->patrimonio;
-            $search->responsavel = ucfirst($item->responsavel);
-            $search->data_entrada = implode("/", array_reverse(explode("-", $item->data_entrada)));
-
-
-            break;
-        }
-    }
-
-    header('location: saida.php?recover=1&id=' . $search->id . '&equip=' . $search->equipamento . '&patrim=' . $search->patrimonio . '&resp=' . $search->responsavel . '&data=' . $search->data_entrada);
+    header('location: saida.php?read=1&id=' . $search->id . '&equip=' . $search->equipamento . '&patrim=' . $search->patrimonio . '&resp=' . $search->responsavel . '&   data=' . $search->data_entrada);
 
 } else if ($action == 'remove') {
 
