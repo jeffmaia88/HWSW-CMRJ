@@ -68,9 +68,10 @@
                                                 <label for="Equip"> Equipamento: </label>
                                                 <select class="custom-select inputs" name="equipamento" id="Equip">
                                                     <option selected></option>
-                                                    <option value="computador">Computador</option>
-                                                    <option value="monitor">Monitor</option>
-                                                    <option value="impressora">Impressora</option>
+                                                    <option value="Computador">Computador</option>
+                                                    <option value="Monitor">Monitor</option>
+                                                    <option value="Notebook">Notebook</option>
+                                                    <option value="Impressora">Impressora</option>
                                                 </select>
                                             </div>
 
@@ -99,25 +100,15 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-
-                <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
-                    <div class="bg-primary pt-2 text-white d-flex justify-content-center">
-                        <h5>Equipamento Incluído com Sucesso</h5>
-                    </div>
-                <?php } ?>
-
-
+                        <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
+                            <div class="bg-primary pt-2 text-white d-flex justify-content-center mt-5">
+                                <h5>Equipamento Incluído com Sucesso</h5>
+                            </div>
+                    <?php } ?>
+                    </div>                    
+                </div>             
             </div>
-
-
     </section>
-
-
-
-
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"

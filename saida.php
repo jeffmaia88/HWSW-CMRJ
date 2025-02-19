@@ -103,8 +103,7 @@
                                                 <td><?= $_GET['patrim'] ?></td>
                                                 <td><?= $_GET['resp'] ?></td>
                                                 <td><?= $_GET['data'] ?></td>
-                                                <td onclick="remove(<?php $_GET['id'] ?>)" id="key">
-                                                    <?= $_GET['id'] ?>
+                                                <td onclick="remove(parseInt(<?= $_GET['id'] ?>))">                                                    
                                                     <i class="fa-solid fa-trash pl-4"></i>
                                                 </td>
 
@@ -125,16 +124,17 @@
 
 
                         </div>
-                    </div>
+                            <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
+                                <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5 ">
+                                    <h5>Equipamento Excluído com Sucesso</h5>
+                                </div>
+                            <?php } ?>
+                    </div>                   
                 </div>
             </div>
 
         </div>
-        <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
-            <div class="bg-danger pt-2 text-white d-flex justify-content-center">
-                <h5>Equipamento Excluído com Sucesso</h5>
-            </div>
-        <?php } ?>
+        
 
         </div>
 
