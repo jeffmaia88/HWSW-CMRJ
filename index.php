@@ -37,13 +37,21 @@
                         Login
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form method="post" action="authenticate_controller.php">
                         <div class="form-group">
-                                <input type="text" class="form-control" placeholder="E-mail">
+                                <input type="text" class="form-control" placeholder="Login" name="login">
                         </div>
                         <div class="form-group">
-                                <input type="password" class="form-control" placeholder="Senha">
+                                <input type="password" class="form-control" placeholder="Senha" name="password">
                         </div>
+
+                        <?php if(isset($_GET['login']) && $_GET['login'] == 'error') { ?>
+                            <div class="text-danger">
+                                Usuário ou senha inválidos
+                            </div>
+
+                        <?php } ?>
+
                             <button class="btn btn-lg btn-primary btn-block teste" type="submit">Entrar</button>                            
                         </form>
                     </div>
