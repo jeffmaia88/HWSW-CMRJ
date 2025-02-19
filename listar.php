@@ -1,6 +1,6 @@
 <?php
 
-$action = 'recoverAll';
+$action = 'readAll';
 require 'entrada_controller.php';
 
 ?>
@@ -94,7 +94,7 @@ require 'entrada_controller.php';
                                     <?php foreach ($listagem as $index => $item) { ?>
 
                                         <tr>
-                                            <td><?= ucfirst($item->equipamento) ?></td>
+                                            <td><?= $item->equipamento ?></td>
                                             <td><?= $item->patrimonio ?></td>
                                             <td><?= ucfirst($item->responsavel) ?></td>
                                             <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>

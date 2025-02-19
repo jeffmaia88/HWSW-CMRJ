@@ -68,7 +68,7 @@
 
                                 <div class="row pt-5">
                                     <div class=" col-md-12 ">
-                                        <form method="post" action="entrada_controller.php?action=recover">
+                                        <form method="post" action="entrada_controller.php?action=read">
                                             <div class="d-flex ">
                                                 <div class="ml-auto">
                                                     <input type="text" name="search" class="form-control"
@@ -87,7 +87,7 @@
                                     <div class="col-md-12">
 
 
-                                        <?php if (isset($_GET['recover']) && $_GET['recover'] == 1 && $_GET['id'] != null) { ?>
+                                        <?php if (isset($_GET['read']) && $_GET['read'] == 1 && $_GET['id'] != null) { ?>
 
 
 
@@ -101,9 +101,9 @@
                                                 </tr>
                                                 <td><?= $_GET['equip'] ?> </td>
                                                 <td><?= $_GET['patrim'] ?></td>
-                                                <td><?= $_GET['resp'] ?></td>
-                                                <td><?= $_GET['data'] ?></td>
-                                                <td onclick="remove(parseInt(<?= $_GET['id'] ?>))">                                                    
+                                                <td><?= ucfirst($_GET['resp']) ?></td>
+                                                <td><?= implode("/", array_reverse(explode("-", $_GET['data']))) ?></td>
+                                                <td onclick="remove(parseInt(<?= $_GET['id'] ?>))">
                                                     <i class="fa-solid fa-trash pl-4"></i>
                                                 </td>
 
@@ -124,17 +124,17 @@
 
 
                         </div>
-                            <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
-                                <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5 ">
-                                    <h5>Equipamento Excluído com Sucesso</h5>
-                                </div>
-                            <?php } ?>
-                    </div>                   
+                        <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
+                            <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5 ">
+                                <h5>Equipamento Excluído com Sucesso</h5>
+                            </div>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
 
         </div>
-        
+
 
         </div>
 
