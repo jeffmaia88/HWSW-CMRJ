@@ -54,6 +54,8 @@
                         <li class=" list-group-item ">
                             <a href="listar.php">Listar Estoque </a>
                         </li>
+                        
+
 
                     </ul>
 
@@ -99,11 +101,11 @@
                                                     <th>Data de entrada</th>
                                                     <th>Remover</th>
                                                 </tr>
-                                                <td><?= $_GET['equip'] ?> </td>
+                                                <td> <?= $_GET['equip'] ?> </td>
                                                 <td><?= $_GET['patrim'] ?></td>
                                                 <td><?= ucfirst($_GET['resp']) ?></td>
                                                 <td><?= implode("/", array_reverse(explode("-", $_GET['data']))) ?></td>
-                                                <td onclick="remove(parseInt(<?= $_GET['id'] ?>))">
+                                                <td onclick="alertConfirm()" class="trash">
                                                     <i class="fa-solid fa-trash pl-4"></i>
                                                 </td>
 
@@ -155,12 +157,18 @@
 
 <script>
 
-    id = document.getElementById(key).value;
-
+    
     function remove(id) {
         location.href = 'entrada_controller.php?action=remove&id=' + id;
     }
 
+
+    function alertConfirm() {
+            if (confirm("Deseja Realmente excluir o Equipamento do Registro?")) {
+                    remove(parseInt(<?= $_GET['id'] ?>));
+  } 
+    
+}
 
 </script>
 

@@ -2,6 +2,10 @@
     background-color: #1b375f;
 }
 
+#upbar a {
+    text-decoration: none;
+}
+
 @media (min-width: 1200px) {
     .container {
         margin-left: 100px;
@@ -11,10 +15,22 @@
 
 }
 
+ /* ---------------------------------------------- Tela de Login ----------------------------------------*/
+#card-login {
+    padding: 30px 0 0 0;
+    width: 350px;
+    margin: 150px auto;
+    
+  }
+
+/*------------------------------------------------ Logo no header ---------------------------------------*/
+
 #logoname {
     color: white;
     margin: 20px;
 }
+
+/*------------------------------------------------ Inputs ---------------------------------------*/
 
 .inputs {
     margin-left: 5px;
@@ -34,4 +50,8 @@
 
     border-radius: 12px;
 
+}
+
+.trash:hover {
+    cursor: pointer;
 }
