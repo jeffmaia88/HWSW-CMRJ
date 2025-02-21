@@ -54,6 +54,9 @@
                         <li class="list-group-item ">
                             <a href="saida.php">Saída Patrimônio</a>
                         </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Busca de Patrimônio</a>
+                        </li>
                         <li class=" list-group-item ">
                             <a href="listar.php">Listar Estoque </a>
                         </li>
@@ -68,10 +71,10 @@
                     <div class="container pagina">
                         <div class="row">
                             <div class="col">
-                                <h4>Entrada Patrimônio</h4>
+                                <h4>Entrada de Patrimônio</h4>
                                 <hr />
 
-                                <form method="post" action="entrada_controller.php?action=insert">
+                                <form method="post" action="controller.php?action=insertEntry">
                                     <div class="row mb-3 d-flex tarefa"> <!-- linha -->
 
                                         <div class="col-sm-6"> <!-- coluna da esquerda -->
@@ -87,26 +90,41 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="Patrim">Patrimônio: </label>
+                                                <label for="Respons" class="mr-4">Modelo: </label>
+                                                <input type="text" name="modelo" class="form-control inputs2"
+                                                    >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="Patrim" class="mr-3">Patrimônio: </label>
                                                 <input type="text" class="form-control inputs" name="patrimonio"
                                                     id="patrimonio">
                                             </div>
+                                            
+                                            
 
                                         </div>
                                         <div class="col-sm-6"> <!-- coluna da direita -->
 
                                             <div class="form-group">
-                                                <label for="Respons">Responsável</label>
+                                                <label for="Respons" class="mr-3">Setor Origem:</label>
+                                                <input type="text" name="origem" class="form-control inputs"
+                                                    id="origem">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="Respons" class="mr-4">Responsável:</label>
                                                 <input type="text" name="responsavel" class="form-control inputs"
                                                     id="responsavel">
                                             </div>
                                             <div class="form-group">
-                                                <label for="Respons">Data: </label>
+                                                <label for="Respons">Data de Entrada: </label>
                                                 <input type="date" class="form-control inputs" name="data_entrada"
                                                     id="data_entrada">
                                             </div>
+                                            
                                         </div>
-                                        <button class="btn btn-success ml-auto mt-4">Cadastrar</button>
+                                        <button class="btn btn-success ml-auto mt-4">Cadastrar Entrada</button>
                                     </div>
                                 </form>
                             </div>

@@ -10,7 +10,7 @@
 
 
 $action = 'readAll';
-require 'entrada_controller.php';
+require 'controller.php';
 
 ?>
 
@@ -67,6 +67,9 @@ require 'entrada_controller.php';
                         <li class="list-group-item ">
                             <a href="saida.php">Saída Patrimônio</a>
                         </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Busca de Patrimônio</a>
+                        </li>
                         <li class=" list-group-item ">
                             <a href="listar.php">Listar Estoque </a>
                         </li>
@@ -97,8 +100,10 @@ require 'entrada_controller.php';
                                 <table class="table table-striped mt-3">
                                     <tr>
                                         <th>Equipamento</th>
+                                        <th>Modelo</th>
                                         <th>Patrimônio</th>
-                                        <th>Entregue Por:</th>
+                                        <th>Setor de Origem</th>
+                                        <th>Entregue</th>
                                         <th>Data da Entrega</th>
                                     </tr>
 
@@ -106,7 +111,9 @@ require 'entrada_controller.php';
 
                                         <tr>
                                             <td><?= $item->equipamento ?></td>
+                                            <td><?= ucfirst($item->modelo) ?></td>
                                             <td><?= $item->patrimonio ?></td>
+                                            <td><?= ucfirst($item->origem) ?></td>
                                             <td><?= ucfirst($item->responsavel) ?></td>
                                             <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
                                         </tr>

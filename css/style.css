@@ -15,6 +15,15 @@
 
 }
 
+#search-exit {
+    margin-top: 200px;
+}
+
+#row-search {
+
+    margin-top: -15px;
+}
+
  /* ---------------------------------------------- Tela de Login ----------------------------------------*/
 #card-login {
     padding: 30px 0 0 0;
@@ -34,6 +43,13 @@
 
 .inputs {
     margin-left: 5px;
+    width: 350px;
+    display: inline;
+
+}
+
+.inputs2 {
+    margin-left: 20px;
     width: 350px;
     display: inline;
 
