@@ -56,16 +56,16 @@
                 <div class="col-md-3">
                     <ul class="list-group">
                         <li class="list-group-item ">
-                            <a href="entrada.php">Entrada Patrimônio</a>
+                            <a href="entrada.php">Entrada de Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
-                            <a href="saida.php">Saída Patrimônio</a>
+                            <a href="saida.php">Saída de Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
                             <a href="busca.php">Busca de Patrimônio</a>
                         </li>
                         <li class=" list-group-item ">
-                            <a href="listar.php">Listar Estoque </a>
+                            <a href="listar.php">Listagem de Estoque </a>
                         </li>
                         
 
@@ -111,13 +111,17 @@
                                             <table class="table table-striped">
                                                 <tr>
                                                     <th>Equipamento</th>
+                                                    <th>Modelo</th>
                                                     <th>Patrimônio</th>
+                                                    <th>Setor de Origem</th>
                                                     <th>Responsável</th>
                                                     <th>Data de entrada</th>
                                                     <th>Remover</th>
                                                 </tr>
                                                 <td> <?= $_GET['equip'] ?> </td>
+                                                <td> <?= ucfirst($_GET['model']) ?> </td>
                                                 <td><?= $_GET['patrim'] ?></td>
+                                                <td><?= ucfirst($_GET['origem']) ?></td>
                                                 <td><?= ucfirst($_GET['resp']) ?></td>
                                                 <td><?= implode("/", array_reverse(explode("-", $_GET['data']))) ?></td>
                                                 <td onclick="alertConfirm()" class="trash">
@@ -217,7 +221,7 @@
 
 
                         </div>
-                        <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
+                        <?php if (isset($_GET['remove']) && $_GET['remove'] == 2) { ?>
                             <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5 ">
                                 <h5>Equipamento Excluído com Sucesso</h5>
                             </div>
@@ -252,12 +256,12 @@
 
     
     function remove(id) {
-        location.href = 'entrada_controller.php?action=remove&id=' + id;
+        location.href = 'controller.php?action=remove&id=' + id;
     }
 
 
     function alertConfirm() {
-            if (confirm("Deseja Realmente excluir o Equipamento do Registro?")) {
+            if (confirm("Deseja Realmente excluir o Equipamento do Registro de Entradas?")) {
                     remove(parseInt(<?= $_GET['id'] ?>));
   } 
     

@@ -49,16 +49,16 @@
                 <div class="col-md-3">
                     <ul class="list-group">
                         <li class="list-group-item ">
-                            <a href="entrada.php">Entrada Patrimônio</a>
+                            <a href="entrada.php">Entrada de Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
-                            <a href="saida.php">Saída Patrimônio</a>
+                            <a href="saida.php">Saída de Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
                             <a href="busca.php">Busca de Patrimônio</a>
                         </li>
                         <li class=" list-group-item ">
-                            <a href="listar.php">Listar Estoque </a>
+                            <a href="listar.php">Listagem de Estoque </a>
                         </li>
                         
 
@@ -71,8 +71,10 @@
                     <div class="container pagina">
                         <div class="row">
                             <div class="col">
-                                <h4>Entrada de Patrimônio</h4>
-                                <hr />
+                                <h4>Entrada de Patrimônio
+                                    <img src="img/add.png" class="pl-4 mb-2">
+                                </h4>
+                                <hr>
 
                                 <form method="post" action="controller.php?action=insertEntry">
                                     <div class="row mb-3 d-flex tarefa"> <!-- linha -->

@@ -62,16 +62,16 @@ require 'controller.php';
                 <div class="col-md-3">
                     <ul class="list-group">
                         <li class="list-group-item ">
-                            <a href="entrada.php">Entrada Patrimônio</a>
+                            <a href="entrada.php">Entrada de Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
-                            <a href="saida.php">Saída Patrimônio</a>
+                            <a href="saida.php">Saída de Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
                             <a href="busca.php">Busca de Patrimônio</a>
                         </li>
                         <li class=" list-group-item ">
-                            <a href="listar.php">Listar Estoque </a>
+                            <a href="listar.php">Listagem de Estoque </a>
                         </li>
                        
 
@@ -84,7 +84,9 @@ require 'controller.php';
                     <div class="container pagina">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>Listagem de Patrimônio</h4>
+                                <h4>Listagem de Patrimônio
+                                    <img src="img/list.png" class="pl-4 mb-2">
+                                </h4>
                                 <hr />
 
                                 <div class="d-flex pt-5 ">
@@ -102,8 +104,6 @@ require 'controller.php';
                                         <th>Equipamento</th>
                                         <th>Modelo</th>
                                         <th>Patrimônio</th>
-                                        <th>Setor de Origem</th>
-                                        <th>Entregue</th>
                                         <th>Data da Entrega</th>
                                     </tr>
 
@@ -113,8 +113,6 @@ require 'controller.php';
                                             <td><?= $item->equipamento ?></td>
                                             <td><?= ucfirst($item->modelo) ?></td>
                                             <td><?= $item->patrimonio ?></td>
-                                            <td><?= ucfirst($item->origem) ?></td>
-                                            <td><?= ucfirst($item->responsavel) ?></td>
                                             <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
                                         </tr>
                                     <?php } ?>
