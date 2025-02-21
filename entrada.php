@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+
+    if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
+        header('location: index.php?login=error2');
+    }    
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -25,7 +34,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item ">
-                        <a href="#" class="nav-link text-white">Sair</a>
+                        <a href="logoff.php" class="nav-link text-white">Sair</a>
                     </li>
             </div>
         </div>

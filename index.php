@@ -52,6 +52,14 @@
 
                         <?php } ?>
 
+                        <?php if(isset($_GET['login']) && $_GET['login'] == 'error2') { ?>
+                            <div class="text-danger">
+                                Faça Login antes de acessar o Sistema de Controle de Patrimônio
+                            </div>
+
+                        <?php } ?>
+
+
                             <button class="btn btn-lg btn-primary btn-block teste" type="submit">Entrar</button>                            
                         </form>
                     </div>
