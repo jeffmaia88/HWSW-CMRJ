@@ -14,10 +14,12 @@ class EntradaService
 
 	public function insert()
 	{ //create
-		$query = 'insert into tb_entrada(equipamento,patrimonio,responsavel,data_entrada)values(:equipamento, :patrimonio, :responsavel, :data_entrada)';
+		$query = 'insert into tb_entrada(equipamento,modelo,patrimonio,origem,responsavel,data_entrada)values(:equipamento,:modelo, :patrimonio,:origem, :responsavel, :data_entrada)';
 		$stmt = $this->conexao->prepare($query);
 		$stmt->bindValue(':equipamento', $this->entrada->__get('equipamento'));
+		$stmt->bindValue(':modelo', $this->entrada->__get('modelo'));
 		$stmt->bindValue(':patrimonio', $this->entrada->__get('patrimonio'));
+		$stmt->bindValue(':origem', $this->entrada->__get('origem'));
 		$stmt->bindValue(':responsavel', $this->entrada->__get('responsavel'));
 		$stmt->bindValue(':data_entrada', $this->entrada->__get('data_entrada'));
 		$stmt->execute();
@@ -25,7 +27,7 @@ class EntradaService
 
 	public function readAll()
 	{
-		$query = 'select id,equipamento,patrimonio,responsavel,data_entrada from tb_entrada order by equipamento ASC';
+		$query = 'select equipamento,modelo,patrimonio,origem,responsavel,data_entrada from tb_entrada order by equipamento ASC';
 		$stmt = $this->conexao->prepare($query);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_OBJ);

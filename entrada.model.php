@@ -4,10 +4,12 @@ class Entrada {
 
 private $id;
 private $equipamento;
+private $modelo;
 private $responsavel;
 private $patrimonio;
+private $origem;
 private $data_entrada;
-private $data_saida;
+
 
 public function __get($atribute) {
     return $this->$atribute;
