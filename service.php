@@ -6,6 +6,7 @@ class EntradaService
 	private $conexao;
 	private $entrada;
 
+
 	public function __construct(Connection $conexao, Entrada $entrada)
 	{
 		$this->conexao = $conexao->conecting();
@@ -23,20 +24,45 @@ class EntradaService
 		$stmt->bindValue(':responsavel', $this->entrada->__get('responsavel'));
 		$stmt->bindValue(':data_entrada', $this->entrada->__get('data_entrada'));
 		$stmt->execute();
+
+		
+
+	}
+
+	public function insertEstoque(){
+
+		$query2 = 'insert into tb_estoque(equipamento,modelo,patrimonio,data_entrada) values(:equipamento,:modelo, :patrimonio,:data_entrada)';
+		$stmt = $this->conexao->prepare($query2);
+		$stmt->bindValue(':equipamento', $this->entrada->__get('equipamento'));
+		$stmt->bindValue(':modelo', $this->entrada->__get('modelo'));
+		$stmt->bindValue(':patrimonio', $this->entrada->__get('patrimonio'));
+		$stmt->bindValue(':data_entrada', $this->entrada->__get('data_entrada'));
+		$stmt->execute();
+
 	}
 
 	public function readAll()
 	{
-		$query = 'select equipamento,modelo,patrimonio,origem,responsavel,data_entrada from tb_entrada order by equipamento ASC';
+		$query = 'select equipamento,modelo,patrimonio,data_entrada from tb_estoque order by equipamento ASC';
 		$stmt = $this->conexao->prepare($query);
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
 
-	public function read()
+	public function readEntry()
 	{
 
-		$query = 'select id,equipamento,patrimonio,responsavel,data_entrada from tb_entrada where patrimonio = :search';
+		$query = 'select id,equipamento, modelo, patrimonio,origem,responsavel,data_entrada from tb_entrada where patrimonio = :search';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
+		$stmt->execute();
+		return $stmt->fetch(PDO::FETCH_OBJ);
+	}
+
+	public function readExit()
+	{
+
+		$query = 'select id,equipamento,modelo,patrimonio,origem,responsavel,data_saida from tb_saida where patrimonio = :search';
 		$stmt = $this->conexao->prepare($query);
 		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
 		$stmt->execute();

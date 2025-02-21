@@ -3,7 +3,7 @@
 require "../../HWSW-CMRJ-private/entrada.model.php";
 require "../../HWSW-CMRJ-private/saida.model.php";
 require "../../HWSW-CMRJ-private/saida.service.php";
-require "../../HWSW-CMRJ-private/entrada.service.php";
+require "../../HWSW-CMRJ-private/service.php";
 require "../../HWSW-CMRJ-private/connection.php";
 
 
@@ -15,8 +15,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : $action;
 if ($action == 'insertEntry') {
 
 
-    $entrada = new Entrada();
-
+    $entrada = new Entrada();    
     $entrada->__set('equipamento', $_POST['equipamento']);
     $entrada->__set('modelo', $_POST['modelo']);
     $entrada->__set('patrimonio', $_POST['patrimonio']);
@@ -29,6 +28,7 @@ if ($action == 'insertEntry') {
 
     $entradaService = new EntradaService($connection, $entrada);
     $entradaService->insert();
+    $entradaService->insertEstoque();
 
     header('location: entrada.php?insert=1');
 
@@ -71,11 +71,12 @@ if ($action == 'insertEntry') {
     $key->__set('patrimonio', $_POST['search']);
 
     $entradaService = new EntradaService($connection, $key);
-    $entradaService->read();
+    $entradaService->readEntry();
 
-    $search = $entradaService->read();
+    $search = $entradaService->readEntry();
 
-    header('location: busca.php?read=1&id=' . $search->id . '&equip=' . $search->equipamento . '&patrim=' . $search->patrimonio . '&resp=' . $search->responsavel . '&   data=' . $search->data_entrada);
+    header('location: busca.php?read=1&id=' . $search->id . '&equip=' . $search->equipamento . '&model=' . $search->modelo .'&patrim=' . $search->patrimonio . 
+    '&origem=' . $search->origem .'&resp=' . $search->responsavel . '&data=' . $search->data_entrada);
 
 }  else if ($action == 'readExit') {
 
