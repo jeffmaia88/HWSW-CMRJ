@@ -15,7 +15,7 @@ $action = isset($_GET['action']) ? $_GET['action'] : $action;
 if ($action == 'insertEntry') {
 
 
-    $entrada = new Entrada();    
+    $entrada = new Entrada();
     $entrada->__set('equipamento', $_POST['equipamento']);
     $entrada->__set('modelo', $_POST['modelo']);
     $entrada->__set('patrimonio', $_POST['patrimonio']);
@@ -46,11 +46,12 @@ if ($action == 'insertEntry') {
     $saida->__set('responsavel', $_POST['responsavel']);
     $saida->__set('data_saida', $_POST['data_saida']);
 
-
     $connection = new Connection();
 
     $saidaService = new SaidaService($connection, $saida);
     $saidaService->insert();
+    $saidaService->removeEstoque();
+
 
     header('location: saida.php?insert=1');
 
@@ -75,10 +76,10 @@ if ($action == 'insertEntry') {
 
     $search = $entradaService->readEntry();
 
-    header('location: busca.php?read=1&id=' . $search->id . '&equip=' . $search->equipamento . '&model=' . $search->modelo .'&patrim=' . $search->patrimonio . 
-    '&origem=' . $search->origem .'&resp=' . $search->responsavel . '&data=' . $search->data_entrada);
+    header('location: busca.php?read=1&id=' . $search->id . '&equip=' . $search->equipamento . '&model=' . $search->modelo . '&patrim=' . $search->patrimonio .
+        '&origem=' . $search->origem . '&resp=' . $search->responsavel . '&data=' . $search->data_entrada);
 
-}  else if ($action == 'readExit') {
+} else if ($action == 'readExit') {
 
     $key = new Saida();
     $connection = new connection();
@@ -89,8 +90,8 @@ if ($action == 'insertEntry') {
 
     $search = $saidaService->read();
 
-    header('location: busca.php?read=2&id=' . $search->id . '&equip=' . $search->equipamento . '&model=' . $search->modelo .'&patrim=' . $search->patrimonio . 
-    '&dest=' . $search->destino .'&resp=' . $search->responsavel . '&data=' . $search->data_saida);
+    header('location: busca.php?read=2&id=' . $search->id . '&equip=' . $search->equipamento . '&model=' . $search->modelo . '&patrim=' . $search->patrimonio .
+        '&dest=' . $search->destino . '&resp=' . $search->responsavel . '&data=' . $search->data_saida);
 
 } else if ($action == 'remove') {
 

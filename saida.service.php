@@ -52,6 +52,15 @@ class SaidaService
 
 	}
 
+	public function removeEstoque()
+	{
+		$query = 'delete from tb_estoque where patrimonio = :patrimonio';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(':patrimonio', $this->saida->__get('patrimonio'));
+		$stmt->execute();
+
+	}
+
 
 }
 
