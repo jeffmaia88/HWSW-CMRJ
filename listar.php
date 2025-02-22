@@ -1,7 +1,16 @@
 <?php
+ 
+    session_start();
+    
+    if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
+        header('location: index.php?login=error2');
+    }
+    
 
-$action = 'recoverAll';
-require 'entrada_controller.php';
+
+
+$action = 'readAll';
+require 'controller.php';
 
 ?>
 
@@ -38,7 +47,7 @@ require 'entrada_controller.php';
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item ">
-                        <a href="#" class="nav-link text-white">Sair</a>
+                        <a href="logoff.php" class="nav-link text-white">Sair</a>
                     </li>
             </div>
         </div>
@@ -53,14 +62,19 @@ require 'entrada_controller.php';
                 <div class="col-md-3">
                     <ul class="list-group">
                         <li class="list-group-item ">
-                            <a href="entrada.php">Entrada Patrimônio</a>
+                            <a href="entrada.php">Entrada de Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
-                            <a href="saida.php">Saída Patrimônio</a>
+                            <a href="saida.php">Saída de Patrimônio</a>
+                        </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Busca de Patrimônio</a>
                         </li>
                         <li class=" list-group-item ">
-                            <a href="listar.php">Listar Estoque </a>
+                            <a href="listar.php">Listagem de Estoque </a>
                         </li>
+                       
+
 
                     </ul>
 
@@ -70,7 +84,9 @@ require 'entrada_controller.php';
                     <div class="container pagina">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>Listagem de Patrimônio</h4>
+                                <h4>Listagem de Patrimônio
+                                    <img src="img/list.png" class="pl-4 mb-2">
+                                </h4>
                                 <hr />
 
                                 <div class="d-flex pt-5 ">
@@ -86,17 +102,17 @@ require 'entrada_controller.php';
                                 <table class="table table-striped mt-3">
                                     <tr>
                                         <th>Equipamento</th>
+                                        <th>Modelo</th>
                                         <th>Patrimônio</th>
-                                        <th>Entregue Por:</th>
                                         <th>Data da Entrega</th>
                                     </tr>
 
                                     <?php foreach ($listagem as $index => $item) { ?>
 
                                         <tr>
-                                            <td><?= ucfirst($item->equipamento) ?></td>
+                                            <td><?= $item->equipamento ?></td>
+                                            <td><?= ucfirst($item->modelo) ?></td>
                                             <td><?= $item->patrimonio ?></td>
-                                            <td><?= ucfirst($item->responsavel) ?></td>
                                             <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
                                         </tr>
                                     <?php } ?>

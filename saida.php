@@ -1,13 +1,11 @@
-<script>
+<?php
+session_start();
 
+if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
+    header('location: index.php?login=error2');
+}
 
-    function remove(id) {
-        location.href = 'entrada_controller.php?action=remove&id=' + id;
-    }
-
-
-</script>
-
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,12 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -42,7 +34,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item ">
-                        <a href="#" class="nav-link text-white">Sair</a>
+                        <a href="logoff.php" class="nav-link text-white">Sair</a>
                     </li>
             </div>
         </div>
@@ -57,14 +49,21 @@
                 <div class="col-md-3">
                     <ul class="list-group">
                         <li class="list-group-item ">
-                            <a href="entrada.php">Entrada Patrimônio</a>
+                            <a href="entrada.php">Entrada de Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
-                            <a href="saida.php">Saída Patrimônio</a>
+                            <a href="saida.php">Saída de Patrimônio</a>
+                        </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Busca de Patrimônio</a>
                         </li>
                         <li class=" list-group-item ">
-                            <a href="listar.php">Listar Estoque </a>
+                            <a href="listar.php">Listagem de Estoque </a>
                         </li>
+
+
+
+
 
                     </ul>
 
@@ -73,89 +72,74 @@
                 <div class="col-md-9">
                     <div class="container pagina">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h4>Saída Patrimônio</h4>
+                            <div class="col">
+                                <h4>Saída de Patrimônio
+                                    <img src="img/sub.png" class="pl-4 mb-2">
+                                </h4>
                                 <hr />
 
-                                <div class="row pt-5">
-                                    <div class=" col-md-12 ">
-                                        <form method="post" action="entrada_controller.php?action=recover">
-                                            <div class="d-flex ">
-                                                <div class="ml-auto">
-                                                    <input type="text" name="search" class="form-control"
-                                                        placeholder="buscar patrimônio" id="search" />
-                                                </div>
-                                                <button id="search-button" class="btn btn-primary">
-                                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                                </button>
+                                <form method="post" action="controller.php?action=insertExit">
+                                    <div class="row mb-3 d-flex tarefa"> <!-- linha -->
+
+                                        <div class="col-sm-6"> <!-- coluna da esquerda -->
+                                            <div class="form-group">
+                                                <label for="Equip"> Equipamento: </label>
+                                                <select class="custom-select inputs" name="equipamento" id="Equip">
+                                                    <option selected></option>
+                                                    <option value="Computador">Computador</option>
+                                                    <option value="Monitor">Monitor</option>
+                                                    <option value="Notebook">Notebook</option>
+                                                    <option value="Impressora">Impressora</option>
+                                                </select>
                                             </div>
-                                        </form>
+
+                                            <div class="form-group">
+                                                <label for="Respons" class="mr-4">Modelo: </label>
+                                                <input type="text" name="modelo" class="form-control inputs2"
+                                                    id="modelo">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="Patrim" class="mr-3">Patrimônio: </label>
+                                                <input type="text" class="form-control inputs" name="patrimonio"
+                                                    id="patrimonio">
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-sm-6"> <!-- coluna da direita -->
+
+                                            <div class="form-group">
+                                                <label for="Respons" class="mr-3">Setor Destino:</label>
+                                                <input type="text" name="destino" class="form-control inputs"
+                                                    id="destino">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="Respons" class="mr-4">Responsável:</label>
+                                                <input type="text" name="responsavel" class="form-control inputs"
+                                                    id="responsavel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="Respons">Data de Saida: </label>
+                                                <input type="date" class="form-control inputs" name="data_saida">
+                                            </div>
+
+                                        </div>
+                                        <button class="btn btn-danger ml-auto mt-4">Realizar Saída</button>
                                     </div>
-
-                                </div>
-
-                                <div class="row mt-3">
-                                    <div class="col-md-12">
-
-
-                                        <?php if (isset($_GET['recover']) && $_GET['recover'] == 1 && $_GET['id'] != null) { ?>
-
-
-                                            <table class="table table-striped">
-                                                <tr>
-                                                    <th>Equipamento</th>
-                                                    <th>Patrimônio</th>
-                                                    <th>Responsável</th>
-                                                    <th>Data de entrada</th>
-                                                    <th>Remover</th>
-                                                </tr>
-                                                <td><?= $_GET['equip'] ?> </td>
-                                                <td><?= $_GET['patrim'] ?></td>
-                                                <td><?= $_GET['resp'] ?></td>
-                                                <td><?= $_GET['data'] ?></td>
-                                                <td><i class="fa-solid fa-trash pl-4"
-                                                        onclick="remove(parseInt(<?= $_GET['id'] ?>))" ?></i> </td>
-
-
-
-
-
-
-
-                                            </table>
-
-                                        <?php } ?>
-
-                                    </div>
-
-
-                                </div>
-
-
-
+                                </form>
                             </div>
-
-
                         </div>
+                        <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
+                            <div class="bg-primary pt-2 text-white d-flex justify-content-center mt-5">
+                                <h5>Equipamento Incluído com Sucesso</h5>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>
-
-        </div>
-        <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
-            <div class="bg-danger pt-2 text-white d-flex justify-content-center">
-                <h5>Equipamento Excluído com Sucesso</h5>
-            </div>
-        <?php } ?>
-
-        </div>
-
-
     </section>
-
-
-
-
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
@@ -164,8 +148,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
-
-
-
 
 </html>

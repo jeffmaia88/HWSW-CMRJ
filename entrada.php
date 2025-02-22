@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+
+    if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
+        header('location: index.php?login=error2');
+    }    
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -25,7 +34,7 @@
             <div class="collapse navbar-collapse">
                 <ul class="navbar-nav ml-auto ">
                     <li class="nav-item ">
-                        <a href="#" class="nav-link text-white">Sair</a>
+                        <a href="logoff.php" class="nav-link text-white">Sair</a>
                     </li>
             </div>
         </div>
@@ -40,14 +49,19 @@
                 <div class="col-md-3">
                     <ul class="list-group">
                         <li class="list-group-item ">
-                            <a href="entrada.php">Entrada Patrimônio</a>
+                            <a href="entrada.php">Entrada de Patrimônio</a>
                         </li>
                         <li class="list-group-item ">
-                            <a href="saida.php">Saída Patrimônio</a>
+                            <a href="saida.php">Saída de Patrimônio</a>
+                        </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Busca de Patrimônio</a>
                         </li>
                         <li class=" list-group-item ">
-                            <a href="listar.php">Listar Estoque </a>
+                            <a href="listar.php">Listagem de Estoque </a>
                         </li>
+                        
+
 
                     </ul>
 
@@ -57,10 +71,12 @@
                     <div class="container pagina">
                         <div class="row">
                             <div class="col">
-                                <h4>Entrada Patrimônio</h4>
-                                <hr />
+                                <h4>Entrada de Patrimônio
+                                    <img src="img/add.png" class="pl-4 mb-2">
+                                </h4>
+                                <hr>
 
-                                <form method="post" action="entrada_controller.php?action=insert">
+                                <form method="post" action="controller.php?action=insertEntry">
                                     <div class="row mb-3 d-flex tarefa"> <!-- linha -->
 
                                         <div class="col-sm-6"> <!-- coluna da esquerda -->
@@ -68,56 +84,62 @@
                                                 <label for="Equip"> Equipamento: </label>
                                                 <select class="custom-select inputs" name="equipamento" id="Equip">
                                                     <option selected></option>
-                                                    <option value="computador">Computador</option>
-                                                    <option value="monitor">Monitor</option>
-                                                    <option value="impressora">Impressora</option>
+                                                    <option value="Computador">Computador</option>
+                                                    <option value="Monitor">Monitor</option>
+                                                    <option value="Notebook">Notebook</option>
+                                                    <option value="Impressora">Impressora</option>
                                                 </select>
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="Patrim">Patrimônio: </label>
+                                                <label for="Respons" class="mr-4">Modelo: </label>
+                                                <input type="text" name="modelo" class="form-control inputs2"
+                                                    >
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="Patrim" class="mr-3">Patrimônio: </label>
                                                 <input type="text" class="form-control inputs" name="patrimonio"
                                                     id="patrimonio">
                                             </div>
+                                            
+                                            
 
                                         </div>
                                         <div class="col-sm-6"> <!-- coluna da direita -->
 
                                             <div class="form-group">
-                                                <label for="Respons">Responsável</label>
+                                                <label for="Respons" class="mr-3">Setor Origem:</label>
+                                                <input type="text" name="origem" class="form-control inputs"
+                                                    id="origem">
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="Respons" class="mr-4">Responsável:</label>
                                                 <input type="text" name="responsavel" class="form-control inputs"
                                                     id="responsavel">
                                             </div>
                                             <div class="form-group">
-                                                <label for="Respons">Data: </label>
+                                                <label for="Respons">Data de Entrada: </label>
                                                 <input type="date" class="form-control inputs" name="data_entrada"
                                                     id="data_entrada">
                                             </div>
+                                            
                                         </div>
-                                        <button class="btn btn-success ml-auto mt-4">Cadastrar</button>
+                                        <button class="btn btn-success ml-auto mt-4">Cadastrar Entrada</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                    </div>
-
-                </div>
-
-                <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
-                    <div class="bg-primary pt-2 text-white d-flex justify-content-center">
-                        <h5>Equipamento Incluído com Sucesso</h5>
-                    </div>
-                <?php } ?>
-
-
+                        <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
+                            <div class="bg-primary pt-2 text-white d-flex justify-content-center mt-5">
+                                <h5>Equipamento Incluído com Sucesso</h5>
+                            </div>
+                    <?php } ?>
+                    </div>                    
+                </div>             
             </div>
-
-
     </section>
-
-
-
-
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"

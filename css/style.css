@@ -2,6 +2,10 @@
     background-color: #1b375f;
 }
 
+#upbar a {
+    text-decoration: none;
+}
+
 @media (min-width: 1200px) {
     .container {
         margin-left: 100px;
@@ -11,13 +15,41 @@
 
 }
 
+#search-exit {
+    margin-top: 200px;
+}
+
+#row-search {
+
+    margin-top: -15px;
+}
+
+ /* ---------------------------------------------- Tela de Login ----------------------------------------*/
+#card-login {
+    padding: 30px 0 0 0;
+    width: 350px;
+    margin: 150px auto;
+    
+  }
+
+/*------------------------------------------------ Logo no header ---------------------------------------*/
+
 #logoname {
     color: white;
     margin: 20px;
 }
 
+/*------------------------------------------------ Inputs ---------------------------------------*/
+
 .inputs {
     margin-left: 5px;
+    width: 350px;
+    display: inline;
+
+}
+
+.inputs2 {
+    margin-left: 20px;
     width: 350px;
     display: inline;
 
@@ -34,4 +66,8 @@
 
     border-radius: 12px;
 
+}
+
+.trash:hover {
+    cursor: pointer;
 }
