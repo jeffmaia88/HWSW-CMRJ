@@ -51,10 +51,7 @@ if ($action == 'insertEntry') {
     $saidaService = new SaidaService($connection, $saida);
     $saidaService->insert();
     $saidaService->removeEstoque();
-<<<<<<< HEAD
-=======
 
->>>>>>> e4c831a917a5590c8990222adcd3c28f57b7bf8e
 
     header('location: saida.php?insert=1');
 
@@ -70,15 +67,12 @@ if ($action == 'insertEntry') {
 
     $search = $entradaService->readEntry();
 
-<<<<<<< HEAD
     session_start();
     $_SESSION['searchEntry'] = $search;
 
     header("Location: busca.php");
-=======
-    header('location: busca.php?read=1&id=' . $search->id . '&equip=' . $search->equipamento . '&model=' . $search->modelo . '&patrim=' . $search->patrimonio .
-        '&origem=' . $search->origem . '&resp=' . $search->responsavel . '&data=' . $search->data_entrada);
->>>>>>> e4c831a917a5590c8990222adcd3c28f57b7bf8e
+
+  
 
 } else if ($action == 'readExit') {
 
@@ -91,13 +85,10 @@ if ($action == 'insertEntry') {
 
     $search = $saidaService->readExit();
 
-<<<<<<< HEAD
+
     session_start();
     $_SESSION['searchExit'] = $search;
-=======
-    header('location: busca.php?read=2&id=' . $search->id . '&equip=' . $search->equipamento . '&model=' . $search->modelo . '&patrim=' . $search->patrimonio .
-        '&dest=' . $search->destino . '&resp=' . $search->responsavel . '&data=' . $search->data_saida);
->>>>>>> e4c831a917a5590c8990222adcd3c28f57b7bf8e
+
 
     header("Location: busca.php");
 

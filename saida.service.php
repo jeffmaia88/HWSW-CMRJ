@@ -51,10 +51,7 @@ class SaidaService
 		$stmt->bindValue(':patrimonio', $this->saida->__get('patrimonio'));
 		$stmt->execute();
 
-<<<<<<< HEAD
 
-=======
->>>>>>> e4c831a917a5590c8990222adcd3c28f57b7bf8e
 	}
 
 
