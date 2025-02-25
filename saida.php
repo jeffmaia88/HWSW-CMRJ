@@ -1,9 +1,9 @@
-<?php
-session_start();
+<?php 
+    session_start();
 
-if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
-    header('location: index.php?login=error2');
-}
+    if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
+        header('location: index.php?login=error2');
+    }    
 
 ?>
 
@@ -60,9 +60,7 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                         <li class=" list-group-item ">
                             <a href="listar.php">Listagem de Estoque </a>
                         </li>
-
-
-
+                        
 
 
                     </ul>
@@ -104,11 +102,11 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                                                 <input type="text" class="form-control inputs" name="patrimonio"
                                                 required>
                                             </div>
-
+                                            
 
                                         </div>
                                         <div class="col-sm-6"> <!-- coluna da direita -->
-
+                                            
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-3">Setor Destino:</label>
                                                 <input type="text" name="destino" class="form-control inputs"
@@ -124,7 +122,7 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                                                 <label for="Respons">Data de Saida: </label>
                                                 <input type="date" class="form-control inputs" name="data_saida" required>
                                             </div>
-
+                                            
                                         </div>
                                         <button class="btn btn-danger ml-auto mt-4">Realizar Saída</button>
                                     </div>
@@ -132,15 +130,12 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                             </div>
                         </div>
                         <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
-                            <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5">
-                                <h5>Saída realizada com sucesso</h5>
-                            </div>
                             <div class="bg-primary pt-2 text-white d-flex justify-content-center mt-5">
-                                <h5>Estoque atualizado com sucesso</h5>
+                                <h5>Equipamento Incluído com Sucesso</h5>
                             </div>
-                        <?php } ?>
-                    </div>
-                </div>
+                    <?php } ?>
+                    </div>                    
+                </div>             
             </div>
     </section>
 </body>
