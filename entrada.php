@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Estoque DTI - Página Inicial</title>
+    <title>Estoque DTI - Entrada de Patrimônio</title>
 </head>
 
 <body>
@@ -54,15 +54,13 @@
                         <li class="list-group-item ">
                             <a href="saida.php">Saída de Patrimônio</a>
                         </li>
-                        <li class="list-group-item ">
-                            <a href="busca.php">Busca de Patrimônio</a>
-                        </li>
                         <li class=" list-group-item ">
                             <a href="listar.php">Listagem de Estoque </a>
                         </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Log de E/S</a>
+                        </li>                     
                         
-
-
                     </ul>
 
                 </div>
@@ -98,7 +96,7 @@
 
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
-                                                <input type="text" class="form-control inputs" name="patrimonio" required>
+                                                <input type="number" class="form-control inputs" name="patrimonio" minlength="7" maxlength="7" equired>
                                             </div>
                                             
                                             

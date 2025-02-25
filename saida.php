@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Estoque DTI - Página Inicial</title>
+    <title>Estoque DTI - Saída de Patrimônio</title>
 </head>
 
 <body>
@@ -50,16 +50,16 @@
                     <ul class="list-group">
                         <li class="list-group-item ">
                             <a href="entrada.php">Entrada de Patrimônio</a>
-                        </li>
+                        </l>
                         <li class="list-group-item ">
                             <a href="saida.php">Saída de Patrimônio</a>
-                        </li>
-                        <li class="list-group-item ">
-                            <a href="busca.php">Busca de Patrimônio</a>
                         </li>
                         <li class=" list-group-item ">
                             <a href="listar.php">Listagem de Estoque </a>
                         </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Log de E/S</a>
+                        </li>   
                         
 
 

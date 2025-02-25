@@ -5,6 +5,8 @@
         header('location: index.php?login=error2');
     }
     
+    $search = isset($_SESSION['searchEntry']) ? $_SESSION['searchEntry'] : [];
+    $saida = isset($_SESSION['searchExit']) ? $_SESSION['searchExit'] : [];
 
 ?>
 
@@ -25,7 +27,7 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Estoque DTI - Página Inicial</title>
+    <title>Estoque DTI - Busca de Patrimônio</title>
 </head>
 
 <body>
@@ -61,12 +63,12 @@
                         <li class="list-group-item ">
                             <a href="saida.php">Saída de Patrimônio</a>
                         </li>
-                        <li class="list-group-item ">
-                            <a href="busca.php">Busca de Patrimônio</a>
-                        </li>
                         <li class=" list-group-item ">
                             <a href="listar.php">Listagem de Estoque </a>
                         </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Log de E/S</a>
+                        </li>   
                         
 
 
@@ -103,11 +105,6 @@
                                 <div class="row mt-3">
                                     <div class="col-md-12">
 
-
-                                        <?php if (isset($_GET['read']) && $_GET['read'] == 1 && $_GET['id'] != null) { ?>
-
-
-
                                             <table class="table table-striped">
                                                 <tr>
                                                     <th>Equipamento</th>
@@ -116,21 +113,23 @@
                                                     <th>Setor de Origem</th>
                                                     <th>Responsável</th>
                                                     <th>Data de entrada</th>
-                                                    <th>Remover</th>
+                                                    
                                                 </tr>
-                                                <td> <?= $_GET['equip'] ?> </td>
-                                                <td> <?= ucfirst($_GET['model']) ?> </td>
-                                                <td><?= $_GET['patrim'] ?></td>
-                                                <td><?= ucfirst($_GET['origem']) ?></td>
-                                                <td><?= ucfirst($_GET['resp']) ?></td>
-                                                <td><?= implode("/", array_reverse(explode("-", $_GET['data']))) ?></td>
-                                                <td onclick="alertConfirm()" class="trash">
-                                                    <i class="fa-solid fa-trash pl-4"></i>
-                                                </td>
 
+                                                <?php foreach($search as $index => $item) { ?>
+                                                <tr>
+                                                    <td><?= $item->equipamento ?> </td>
+                                                    <td><?= ucfirst($item->modelo) ?> </td>
+                                                    <td><?= $item->patrimonio ?></td>
+                                                    <td><?= ucfirst($item->origem) ?></td>
+                                                    <td><?= ucfirst($item->responsavel) ?></td>
+                                                    <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
+                                                </tr>                                                                                  
+
+                                                <?php } ?>
                                             </table>
-
-                                        <?php } ?>
+                                        
+                                            
 
 
 
@@ -145,12 +144,7 @@
 
 
                         </div>
-                        <?php if (isset($_GET['remove']) && $_GET['remove'] == 1) { ?>
-                            <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5 ">
-                                <h5>Equipamento Excluído com Sucesso</h5>
-                            </div>
-                        <?php } ?>
-
+                        
                                                 
                         <div class="row" id="search-exit">
                             <div class="col-md-12">
@@ -180,10 +174,7 @@
                                     <div class="col-md-12">
 
 
-                                        <?php if (isset($_GET['read']) && $_GET['read'] == 2 && $_GET['id'] != null) { ?>
-
-
-
+                                        
                                             <table class="table table-striped">
                                                 <tr>
                                                     <th>Equipamento</th>
@@ -192,23 +183,25 @@
                                                     <th>Setor Destino</th>
                                                     <th>Responsável</th>
                                                     <th>Data de Saida</th>
-                                                    <th>Remover</th>
+                                                    
                                                 </tr>
-                                                <td> <?= $_GET['equip'] ?> </td>
-                                                <td> <?= ucfirst($_GET['model']) ?> </td>
-                                                <td><?= $_GET['patrim'] ?></td>
-                                                <td><?= ucfirst($_GET['dest']) ?></td>
-                                                <td><?= ucfirst($_GET['resp']) ?></td>
-                                                <td><?= implode("/", array_reverse(explode("-", $_GET['data']))) ?></td>
-                                                <td onclick="alertConfirm()" class="trash">
-                                                    <i class="fa-solid fa-trash pl-4"></i>
-                                                </td>
 
-                                            </table>
+                                            <?php foreach($saida as $index => $item) { ?>
+                                                <tr>
+                                                    <td><?= $item->equipamento ?> </td>
+                                                    <td><?= ucfirst($item->modelo) ?> </td>
+                                                    <td><?= $item->patrimonio ?></td>
+                                                    <td><?= ucfirst($item->destino) ?></td>
+                                                    <td><?= ucfirst($item->responsavel) ?></td>
+                                                    <td><?= implode("/", array_reverse(explode("-", $item->data_saida))) ?></td>
+                                                </tr>                                                                                  
 
-                                        <?php } ?>
+                                                <?php } ?>
+                                            </table> 
+                                        
+                                              
 
-
+                                        
 
                                     </div>
 
@@ -221,12 +214,7 @@
 
 
                         </div>
-                        <?php if (isset($_GET['remove']) && $_GET['remove'] == 2) { ?>
-                            <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5 ">
-                                <h5>Equipamento Excluído com Sucesso</h5>
-                            </div>
-                        <?php } ?>
-
+                     
 
                     </div>
                 </div>
@@ -240,7 +228,11 @@
 
     </section>
 
-
+    <?php
+    // Limpar os dados da sessão após a exibição da tabela
+    unset($_SESSION['searchEntry']);
+    unset($_SESSION['searchExit']);
+    ?>
 
 
 </body>
@@ -252,22 +244,6 @@
     integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
     crossorigin="anonymous"></script>
 
-<script>
-
-    
-    function remove(id) {
-        location.href = 'controller.php?action=remove&id=' + id;
-    }
-
-
-    function alertConfirm() {
-            if (confirm("Deseja Realmente excluir o Equipamento do Registro de Entradas?")) {
-                    remove(parseInt(<?= $_GET['id'] ?>));
-  } 
-    
-}
-
-</script>
 
 
 </html>

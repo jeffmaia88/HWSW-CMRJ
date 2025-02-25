@@ -16,7 +16,7 @@
 }
 
 #search-exit {
-    margin-top: 200px;
+    margin-top: 150px;
 }
 
 #row-search {
@@ -55,7 +55,7 @@
 
 }
 
-#search {
+.inputsearch {
 
     border-radius: 12px;
 

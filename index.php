@@ -13,7 +13,7 @@
 
     
 
-    <title>Estoque DTI - Página Inicial</title>
+    <title>Estoque DTI - Login</title>
 </head>
 
 <body>

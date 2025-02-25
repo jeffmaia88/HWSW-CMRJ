@@ -1,16 +1,11 @@
-<?php
- 
+<?php 
     session_start();
     
     if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
         header('location: index.php?login=error2');
     }
     
-
-
-
-$action = 'readAll';
-require 'controller.php';
+    $listagem = isset($_SESSION['listagem']) ? $_SESSION['listagem'] : [];
 
 ?>
 
@@ -31,7 +26,7 @@ require 'controller.php';
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Estoque DTI - Página Inicial</title>
+    <title>Estoque DTI - Listagem de Estoque</title>
 </head>
 
 <body>
@@ -67,12 +62,12 @@ require 'controller.php';
                         <li class="list-group-item ">
                             <a href="saida.php">Saída de Patrimônio</a>
                         </li>
-                        <li class="list-group-item ">
-                            <a href="busca.php">Busca de Patrimônio</a>
-                        </li>
                         <li class=" list-group-item ">
                             <a href="listar.php">Listagem de Estoque </a>
                         </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Log de E/S</a>
+                        </li>   
                        
 
 
@@ -88,26 +83,40 @@ require 'controller.php';
                                     <img src="img/list.png" class="pl-4 mb-2">
                                 </h4>
                                 <hr />
+                            
                                 <div class="row">
-                                    <div class="col-md-2 mt-5">
-                                        <button class="btn btn-link" onclick="imprimir('table')">
-                                            <i class="fa-solid fa-print"></i>
-                                            Imprimir
-                                        </button>                                        
+                                    <div class="col-md-3 d-flex pt-5">
+                                                <select class="custom-select inputs ml-auto" name="equipamento" id="equip" onchange="ListEquip()">
+                                                    <option selected>-- Selecione --</option>
+                                                    <option value="Todos">Todos</option>
+                                                    <option value="Computador">Computador</option>
+                                                    <option value="Monitor">Monitor</option>
+                                                    <option value="Notebook">Notebook</option>
+                                                    <option value="Impressora">Impressora</option>
+                                                </select>
                                     </div>
-                                    <div class="col-md-10">
-                                        <div class="d-flex pt-5 ">
-                                            <div class="ml-auto">
-                                                <input type="text" class="form-control" placeholder="buscar patrimônio"
-                                                id="search" />
+                                    <div class="col-md-5 ml-5 ">
+                                        <div class="d-flex pt-5 pl-5">
+                                            <div class="pl-5">
+                                                <input type="text" class="form-control inputsearch" placeholder="buscar patrimônio"/>
                                             </div>
                                                 <button id="search-button" type="button" class="btn btn-primary">
                                                     <i class="fa-solid fa-magnifying-glass"></i>
                                                 </button>
                                         </div>
-
-
                                     </div>
+                                    <div class="col-md-2 mt-5 ml-auto ">
+                                        <div class="d-flex pl-2">                                            
+                                                <button class="btn btn-link ml-4 pl-5" onclick="imprimir('table')">
+                                                    <i class="fa-solid fa-print"></i>
+                                                    Imprimir
+                                                </button>                                          
+                                        </div>
+                                        
+                                                                              
+                                    </div>
+                                    
+                                    
                                         
                                 </div>
 
@@ -120,8 +129,10 @@ require 'controller.php';
                                         <th>Modelo</th>
                                         <th>Patrimônio</th>
                                         <th>Data da Entrega</th>
-                                    </tr>
-
+                                   </tr>
+                                   
+                                   
+                                       
                                     <?php foreach ($listagem as $index => $item) { ?>
 
                                         <tr>
@@ -131,6 +142,9 @@ require 'controller.php';
                                             <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
                                         </tr>
                                     <?php } ?>
+                                    
+
+                                   
                                 </table>
 
 
@@ -150,7 +164,10 @@ require 'controller.php';
 
     </section>
 
-
+    <?php
+    // Limpar os dados da sessão após a exibição da tabela
+    unset($_SESSION['listagem']);
+    ?>
 
 
 </body>
@@ -170,6 +187,14 @@ require 'controller.php';
         print(document.getElementById(id));           
     }
 
+    function ListEquip() {
+        value = document.getElementById('equip').value;
+        location.href = 'controller.php?action=filter&value='+value;
+        
+    }
+
 </script>
+
+
 
 </html>
