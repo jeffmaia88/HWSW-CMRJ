@@ -43,8 +43,9 @@ class EntradaService
 
 	public function readAll()
 	{
-		$query = 'select equipamento,modelo,patrimonio,data_entrada from tb_estoque order by equipamento ASC';
+		$query = 'select id,equipamento, modelo, patrimonio,origem,responsavel,data_entrada from tb_entrada where patrimonio = :search';
 		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
 		$stmt->execute();
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
@@ -56,17 +57,7 @@ class EntradaService
 		$stmt = $this->conexao->prepare($query);
 		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
 		$stmt->execute();
-		return $stmt->fetch(PDO::FETCH_OBJ);
-	}
-
-	public function readExit()
-	{
-
-		$query = 'select id,equipamento,modelo,patrimonio,origem,responsavel,data_saida from tb_saida where patrimonio = :search';
-		$stmt = $this->conexao->prepare($query);
-		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
-		$stmt->execute();
-		return $stmt->fetch(PDO::FETCH_OBJ);
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
 
 	public function remove()
@@ -76,6 +67,27 @@ class EntradaService
 		$stmt->bindValue(':id', $this->entrada->__get('id'));
 		$stmt->execute();
 
+	}
+
+	public function filter()
+	{
+		$valor = $this->entrada->__get('equipamento');
+
+		if($valor =='Todos')
+		{
+			$query = 'select equipamento,modelo,patrimonio,data_entrada from tb_estoque order by equipamento ASC ';
+			$stmt = $this->conexao->prepare($query);
+			$stmt->execute();
+			return $stmt->fetchAll(PDO::FETCH_OBJ);
+		} else {
+			$query = 'select equipamento,modelo,patrimonio,data_entrada from tb_estoque where equipamento = :equipamento order by patrimonio ASC ';
+			$stmt = $this->conexao->prepare($query);
+			$stmt->bindValue(':equipamento', $this->entrada->__get('equipamento'));
+			$stmt->execute();
+			return $stmt->fetchAll(PDO::FETCH_OBJ);
+		}
+
+		
 	}
 
 

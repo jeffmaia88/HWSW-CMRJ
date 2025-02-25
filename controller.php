@@ -18,7 +18,7 @@ if ($action == 'insertEntry') {
     $entrada = new Entrada();    
     $entrada->__set('equipamento', $_POST['equipamento']);
     $entrada->__set('modelo', $_POST['modelo']);
-    $entrada->__set('patrimonio', $_POST['patrimonio']);
+    $entrada->__set('patrimonio', strval($_POST['patrimonio']));
     $entrada->__set('origem', $_POST['origem']);
     $entrada->__set('responsavel', $_POST['responsavel']);
     $entrada->__set('data_entrada', $_POST['data_entrada']);
@@ -51,18 +51,10 @@ if ($action == 'insertEntry') {
 
     $saidaService = new SaidaService($connection, $saida);
     $saidaService->insert();
+    $saidaService->removeEstoque();
 
     header('location: saida.php?insert=1');
 
-
-
-} else if ($action == 'readAll') {
-
-    $listar = new Entrada();
-    $connection = new Connection();
-
-    $entradaService = new EntradaService($connection, $listar);
-    $listagem = $entradaService->readAll();
 
 } else if ($action == 'readEntry') {
 
@@ -75,8 +67,10 @@ if ($action == 'insertEntry') {
 
     $search = $entradaService->readEntry();
 
-    header('location: busca.php?read=1&id=' . $search->id . '&equip=' . $search->equipamento . '&model=' . $search->modelo .'&patrim=' . $search->patrimonio . 
-    '&origem=' . $search->origem .'&resp=' . $search->responsavel . '&data=' . $search->data_entrada);
+    session_start();
+    $_SESSION['searchEntry'] = $search;
+
+    header("Location: busca.php");
 
 }  else if ($action == 'readExit') {
 
@@ -85,32 +79,34 @@ if ($action == 'insertEntry') {
     $key->__set('patrimonio', $_POST['search']);
 
     $saidaService = new SaidaService($connection, $key);
-    $saidaService->read();
+    $saidaService->readExit();
 
-    $search = $saidaService->read();
+    $search = $saidaService->readExit();
 
-    header('location: busca.php?read=2&id=' . $search->id . '&equip=' . $search->equipamento . '&model=' . $search->modelo .'&patrim=' . $search->patrimonio . 
-    '&dest=' . $search->destino .'&resp=' . $search->responsavel . '&data=' . $search->data_saida);
+    session_start();
+    $_SESSION['searchExit'] = $search;
 
-} else if ($action == 'remove') {
+    header("Location: busca.php");
 
-    $entrada = new Entrada();
+
+} else if ($action == 'filter') {
+
+    $listar = new Entrada();
+    $listar->__set('equipamento', $_GET['value']);
+    
     $connection = new Connection();
 
-    $entrada->__set('id', $_GET['id']);
+    $entradaService = new EntradaService($connection, $listar);
+    $listagem = $entradaService->filter();
 
-    print_r($entrada);
+    session_start();
+    $_SESSION['listagem'] = $listagem;
 
-    $entradaService = new EntradaService($connection, $entrada);
-    $entradaService->remove();
-
-
-
-
-    header('location: busca.php?remove=1');
-
-
+    header("Location: listar.php");
+        
 }
+
+
 
 
 ?>

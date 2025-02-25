@@ -25,22 +25,14 @@ class SaidaService
 		$stmt->execute();
 	}
 
-	public function readAll()
-	{
-		$query = 'select equipamento,modelo,patrimonio,origem,responsavel,data_entrada from tb_saida order by equipamento ASC';
-		$stmt = $this->conexao->prepare($query);
-		$stmt->execute();
-		return $stmt->fetchAll(PDO::FETCH_OBJ);
-	}
-
-	public function read()
+	public function readExit()
 	{
 
 		$query = 'select id,equipamento,modelo,patrimonio,destino,responsavel,data_saida from tb_saida where patrimonio = :search';
 		$stmt = $this->conexao->prepare($query);
 		$stmt->bindValue(':search', $this->saida->__get('patrimonio'));
 		$stmt->execute();
-		return $stmt->fetch(PDO::FETCH_OBJ);
+		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
 
 	public function remove()
@@ -49,6 +41,16 @@ class SaidaService
 		$stmt = $this->conexao->prepare($query);
 		$stmt->bindValue(':id', $this->saida->__get('id'));
 		$stmt->execute();
+
+	}
+
+	public function removeEstoque()
+	{
+		$query = 'delete from tb_estoque where patrimonio = :patrimonio';
+		$stmt = $this->conexao->prepare($query);
+		$stmt->bindValue(':patrimonio', $this->saida->__get('patrimonio'));
+		$stmt->execute();
+
 
 	}
 
