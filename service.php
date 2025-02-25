@@ -25,11 +25,12 @@ class EntradaService
 		$stmt->bindValue(':data_entrada', $this->entrada->__get('data_entrada'));
 		$stmt->execute();
 
-		
+
 
 	}
 
-	public function insertEstoque(){
+	public function insertEstoque()
+	{
 
 		$query2 = 'insert into tb_estoque(equipamento,modelo,patrimonio,data_entrada) values(:equipamento,:modelo, :patrimonio,:data_entrada)';
 		$stmt = $this->conexao->prepare($query2);
@@ -89,6 +90,7 @@ class EntradaService
 
 		
 	}
+
 
 
 }
