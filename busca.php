@@ -89,7 +89,7 @@
                                             <div class="d-flex ">
                                                 <div class="ml-auto">
                                                     <input type="text" name="search" class="form-control"
-                                                        placeholder="buscar patrimônio" id="search" />
+                                                        placeholder="buscar patrimônio" id="search" required />
                                                 </div>
                                                 <button id="search-button" class="btn btn-primary">
                                                     <i class="fa-solid fa-magnifying-glass"></i>
@@ -165,7 +165,7 @@
                                             <div class="d-flex ">
                                                 <div class="ml-auto">
                                                     <input type="text" name="search" class="form-control"
-                                                        placeholder="buscar patrimônio" id="search" />
+                                                        placeholder="buscar patrimônio" id="search"  required/>
                                                 </div>
                                                 <button id="search-button" class="btn btn-primary">
                                                     <i class="fa-solid fa-magnifying-glass"></i>

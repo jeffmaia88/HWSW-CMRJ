@@ -82,7 +82,7 @@
                                         <div class="col-sm-6"> <!-- coluna da esquerda -->
                                             <div class="form-group">
                                                 <label for="Equip"> Equipamento: </label>
-                                                <select class="custom-select inputs" name="equipamento" id="Equip">
+                                                <select class="custom-select inputs" name="equipamento" id="Equip" required>
                                                     <option selected></option>
                                                     <option value="Computador">Computador</option>
                                                     <option value="Monitor">Monitor</option>
@@ -93,14 +93,12 @@
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Modelo: </label>
-                                                <input type="text" name="modelo" class="form-control inputs2"
-                                                    >
+                                                <input type="text" name="modelo" class="form-control inputs2" required >
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
-                                                <input type="text" class="form-control inputs" name="patrimonio"
-                                                    id="patrimonio">
+                                                <input type="text" class="form-control inputs" name="patrimonio" required>
                                             </div>
                                             
                                             
@@ -111,18 +109,18 @@
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-3">Setor Origem:</label>
                                                 <input type="text" name="origem" class="form-control inputs"
-                                                    id="origem">
+                                                required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Responsável:</label>
                                                 <input type="text" name="responsavel" class="form-control inputs"
-                                                    id="responsavel">
+                                                required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="Respons">Data de Entrada: </label>
                                                 <input type="date" class="form-control inputs" name="data_entrada"
-                                                    id="data_entrada">
+                                                required>
                                             </div>
                                             
                                         </div>

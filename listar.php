@@ -88,18 +88,33 @@ require 'controller.php';
                                     <img src="img/list.png" class="pl-4 mb-2">
                                 </h4>
                                 <hr />
-
-                                <div class="d-flex pt-5 ">
-                                    <div class="ml-auto">
-                                        <input type="text" class="form-control" placeholder="buscar patrimônio"
-                                            id="search" />
+                                <div class="row">
+                                    <div class="col-md-2 mt-5">
+                                        <button class="btn btn-link" onclick="imprimir('table')">
+                                            <i class="fa-solid fa-print"></i>
+                                            Imprimir
+                                        </button>                                        
                                     </div>
-                                    <button id="search-button" type="button" class="btn btn-primary">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                    </button>
+                                    <div class="col-md-10">
+                                        <div class="d-flex pt-5 ">
+                                            <div class="ml-auto">
+                                                <input type="text" class="form-control" placeholder="buscar patrimônio"
+                                                id="search" />
+                                            </div>
+                                                <button id="search-button" type="button" class="btn btn-primary">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
+                                        </div>
+
+
+                                    </div>
+                                        
                                 </div>
 
-                                <table class="table table-striped mt-3">
+                                </div>
+                                
+
+                                <table class="table table-striped mt-3" id="table">
                                     <tr>
                                         <th>Equipamento</th>
                                         <th>Modelo</th>
@@ -148,6 +163,13 @@ require 'controller.php';
     crossorigin="anonymous"></script>
 
 <script type="text/javascript" src="https://example.com/fontawesome/v6.6.0/js/conflict-detection.js"></script>
-</body>
+
+<script>
+
+    function imprimir(id) {    
+        print(document.getElementById(id));           
+    }
+
+</script>
 
 </html>

@@ -82,7 +82,7 @@
                                         <div class="col-sm-6"> <!-- coluna da esquerda -->
                                             <div class="form-group">
                                                 <label for="Equip"> Equipamento: </label>
-                                                <select class="custom-select inputs" name="equipamento" id="Equip">
+                                                <select class="custom-select inputs" name="equipamento" id="Equip" required>
                                                     <option selected></option>
                                                     <option value="Computador">Computador</option>
                                                     <option value="Monitor">Monitor</option>
@@ -94,13 +94,13 @@
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Modelo: </label>
                                                 <input type="text" name="modelo" class="form-control inputs2"
-                                                    id="modelo">
+                                                required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
                                                 <input type="text" class="form-control inputs" name="patrimonio"
-                                                    id="patrimonio">
+                                                required>
                                             </div>
                                             
 
@@ -110,17 +110,17 @@
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-3">Setor Destino:</label>
                                                 <input type="text" name="destino" class="form-control inputs"
-                                                    id="destino">
+                                                required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Responsável:</label>
                                                 <input type="text" name="responsavel" class="form-control inputs"
-                                                    id="responsavel">
+                                                required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="Respons">Data de Saida: </label>
-                                                <input type="date" class="form-control inputs" name="data_saida">
+                                                <input type="date" class="form-control inputs" name="data_saida" required>
                                             </div>
                                             
                                         </div>
