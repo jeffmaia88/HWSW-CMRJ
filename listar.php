@@ -6,6 +6,7 @@
     }
     
     $listagem = isset($_SESSION['listagem']) ? $_SESSION['listagem'] : [];
+    $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
 
 ?>
 
@@ -96,15 +97,18 @@
                                                 </select>
                                     </div>
                                     <div class="col-md-5 ml-5 ">
-                                        <div class="d-flex pt-5 pl-5">
-                                            <div class="pl-5">
-                                                <input type="text" class="form-control inputsearch" placeholder="buscar patrimônio"/>
+                                        <form method="post" action="controller.php?action=read">
+                                            <div class="d-flex pt-5 pl-5">                                            
+                                                <div class="pl-5">                                                    
+                                                        <input type="text" class="form-control inputsearch" name="search" placeholder="buscar patrimônio"/>
+                                                </div>
+                                                    <button id="search-button" class="btn btn-primary">
+                                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                                    </button>
                                             </div>
-                                                <button id="search-button" type="button" class="btn btn-primary">
-                                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                                </button>
+                                            </form>
                                         </div>
-                                    </div>
+                                    
                                     <div class="col-md-2 mt-5 ml-auto ">
                                         <div class="d-flex pl-2">                                            
                                                 <button class="btn btn-link ml-4 pl-5" onclick="imprimir('table')">
@@ -123,7 +127,7 @@
                                 </div>
                                 
 
-                                <table class="table table-striped mt-3" id="table">
+                                <table class="table table-striped" id="table">
                                     <tr>
                                         <th>Equipamento</th>
                                         <th>Modelo</th>
@@ -131,6 +135,14 @@
                                         <th>Data da Entrega</th>
                                    </tr>
                                    
+                                   <?php if ($busca != []) { ?>
+                                    <tr>
+                                        <td><?= $busca->equipamento?></td>
+                                        <td><?= ucfirst($busca->modelo)?></td>
+                                        <td><?= $busca->patrimonio?></td>
+                                        <td><?= implode("/", array_reverse(explode("-", $busca->data_entrada)))?></td>
+                                    </tr>
+                                    <?php } ?>
                                    
                                        
                                     <?php foreach ($listagem as $index => $item) { ?>
@@ -167,6 +179,7 @@
     <?php
     // Limpar os dados da sessão após a exibição da tabela
     unset($_SESSION['listagem']);
+    unset($_SESSION['search']);
     ?>
 
 
