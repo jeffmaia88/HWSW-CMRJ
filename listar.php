@@ -133,6 +133,7 @@
                                         <th>Modelo</th>
                                         <th>Patrimônio</th>
                                         <th>Data da Entrega</th>
+                                        <th>Remover</th>
                                    </tr>
                                    
                                    <?php if ($busca != []) { ?>
@@ -141,6 +142,9 @@
                                         <td><?= ucfirst($busca->modelo)?></td>
                                         <td><?= $busca->patrimonio?></td>
                                         <td><?= implode("/", array_reverse(explode("-", $busca->data_entrada)))?></td>
+                                        <td onclick="alertConfirm()" class="trash">
+                                            <i class="fa-solid fa-trash pl-4"></i>
+                                        </td>
                                     </tr>
                                     <?php } ?>
                                    
@@ -152,6 +156,9 @@
                                             <td><?= ucfirst($item->modelo) ?></td>
                                             <td><?= $item->patrimonio ?></td>
                                             <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
+                                            <td onclick="alertConfirm()" class="trash">
+                                                <i class="fa-solid fa-trash pl-4"></i>
+                                            </td>
                                         </tr>
                                     <?php } ?>
                                     
@@ -205,6 +212,20 @@
         location.href = 'controller.php?action=filter&value='+value;
         
     }
+
+    function remove(equip,model,patrim) {
+        
+    }
+
+
+    function alertConfirm() {
+            if (confirm("Deseja Realmente excluir o Equipamento do Registro?")) {
+                equip = document.getElementById('buscaequip').value
+                model = document.getElementById('buscamodel').value
+                patrim = document.getElementById('buscapatrim').value
+                remove(parseInt(<?= $_GET['id'] ?>));
+            }
+    } 
 
 </script>
 
