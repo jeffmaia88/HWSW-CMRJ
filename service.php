@@ -54,7 +54,7 @@ class EntradaService
 	public function readEntry()
 	{
 
-		$query = 'select id,equipamento, modelo, patrimonio,origem,responsavel,data_entrada from tb_entrada where patrimonio = :search';
+		$query = 'select id,equipamento, modelo, patrimonio,origem,responsavel,data_entrada from tb_entrada where patrimonio = :search order by data_entrada DESC';
 		$stmt = $this->conexao->prepare($query);
 		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
 		$stmt->execute();
@@ -74,9 +74,8 @@ class EntradaService
 	{
 		$valor = $this->entrada->__get('equipamento');
 
-		if($valor =='Todos')
-		{
-			$query = 'select equipamento,modelo,patrimonio,data_entrada from tb_estoque order by equipamento ASC ';
+		if ($valor == 'Todos') {
+			$query = 'select equipamento,modelo,patrimonio,data_entrada from tb_estoque order by equipamento ASC, patrimonio ASC ';
 			$stmt = $this->conexao->prepare($query);
 			$stmt->execute();
 			return $stmt->fetchAll(PDO::FETCH_OBJ);
@@ -88,7 +87,7 @@ class EntradaService
 			return $stmt->fetchAll(PDO::FETCH_OBJ);
 		}
 
-		
+
 	}
 
 
