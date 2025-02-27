@@ -213,7 +213,7 @@
         
     }
 
-    function remove(equip,model,patrim) {
+    /*function remove(equip,model,patrim) {
         
     }
 
@@ -225,7 +225,7 @@
                 patrim = document.getElementById('buscapatrim').value
                 remove(parseInt(<?= $_GET['id'] ?>));
             }
-    } 
+    } */
 
 </script>
 
