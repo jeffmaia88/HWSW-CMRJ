@@ -42,13 +42,13 @@ class EntradaService
 
 	}
 
-	public function readAll()
+	public function read()
 	{
-		$query = 'select id,equipamento, modelo, patrimonio,origem,responsavel,data_entrada from tb_entrada where patrimonio = :search';
+		$query = 'select equipamento, modelo, patrimonio, data_entrada from tb_estoque where patrimonio = :search';
 		$stmt = $this->conexao->prepare($query);
 		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
 		$stmt->execute();
-		return $stmt->fetchAll(PDO::FETCH_OBJ);
+		return $stmt->fetch(PDO::FETCH_OBJ);
 	}
 
 	public function readEntry()

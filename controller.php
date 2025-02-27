@@ -56,6 +56,25 @@ if ($action == 'insertEntry') {
     header('location: saida.php?insert=1');
 
 
+} else if ($action == 'read') {
+
+    $key = new Entrada();
+    $connection = new connection();
+    $key->__set('patrimonio', $_POST['search']);
+
+    $entradaService = new EntradaService($connection, $key);
+    $entradaService->read();
+
+    $search = $entradaService->read();
+
+    session_start();
+    $_SESSION['search'] = $search;
+
+    header("Location: listar.php");
+
+
+
+
 } else if ($action == 'readEntry') {
 
     $key = new Entrada();
