@@ -134,8 +134,8 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                             </div>
                         </div>
                         <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
-                            <div class="bg-primary pt-2 text-white d-flex justify-content-center mt-5">
-                                <h5>Equipamento Incluído com Sucesso</h5>
+                            <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5">
+                                <h5>Saída de equipamento realizada com sucesso</h5>
                             </div>
                         <?php } ?>
                     </div>
