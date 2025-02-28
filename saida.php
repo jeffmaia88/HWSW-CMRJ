@@ -1,11 +1,14 @@
-<?php 
-    session_start();
+<?php
+session_start();
 
-    if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
-        header('location: index.php?login=error2');
-    }    
+if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
+    header('location: index.php?login=error2');
+}
 
 ?>
+
+
+<?php ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -50,7 +53,7 @@
                     <ul class="list-group">
                         <li class="list-group-item ">
                             <a href="entrada.php">Entrada de Patrimônio</a>
-                        </l>
+                            </l>
                         <li class="list-group-item ">
                             <a href="saida.php">Saída de Patrimônio</a>
                         </li>
@@ -59,8 +62,8 @@
                         </li>
                         <li class="list-group-item ">
                             <a href="busca.php">Log de E/S</a>
-                        </li>   
-                        
+                        </li>
+
 
 
                     </ul>
@@ -82,7 +85,8 @@
                                         <div class="col-sm-6"> <!-- coluna da esquerda -->
                                             <div class="form-group">
                                                 <label for="Equip"> Equipamento: </label>
-                                                <select class="custom-select inputs" name="equipamento" id="Equip" required>
+                                                <select class="custom-select inputs" name="equipamento" id="equip"
+                                                    required>
                                                     <option selected></option>
                                                     <option value="Computador">Computador</option>
                                                     <option value="Monitor">Monitor</option>
@@ -94,35 +98,35 @@
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Modelo: </label>
                                                 <input type="text" name="modelo" class="form-control inputs2"
-                                                required>
+                                                    id="modelo" required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
                                                 <input type="text" class="form-control inputs" name="patrimonio"
-                                                required>
+                                                    id="patrimonio" required>
                                             </div>
-                                            
+
 
                                         </div>
                                         <div class="col-sm-6"> <!-- coluna da direita -->
-                                            
+
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-3">Setor Destino:</label>
-                                                <input type="text" name="destino" class="form-control inputs"
-                                                required>
+                                                <input type="text" name="destino" class="form-control inputs" required>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Responsável:</label>
                                                 <input type="text" name="responsavel" class="form-control inputs"
-                                                required>
+                                                    required>
                                             </div>
                                             <div class="form-group">
                                                 <label for="Respons">Data de Saida: </label>
-                                                <input type="date" class="form-control inputs" name="data_saida" required>
+                                                <input type="date" class="form-control inputs" name="data_saida"
+                                                    required>
                                             </div>
-                                            
+
                                         </div>
                                         <button class="btn btn-danger ml-auto mt-4">Realizar Saída</button>
                                     </div>
@@ -133,12 +137,13 @@
                             <div class="bg-primary pt-2 text-white d-flex justify-content-center mt-5">
                                 <h5>Equipamento Incluído com Sucesso</h5>
                             </div>
-                    <?php } ?>
-                    </div>                    
-                </div>             
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
     </section>
 </body>
+
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
     integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"

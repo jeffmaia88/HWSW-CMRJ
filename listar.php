@@ -1,12 +1,12 @@
-<?php 
-    session_start();
-    
-    if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
-        header('location: index.php?login=error2');
-    }
-    
-    $listagem = isset($_SESSION['listagem']) ? $_SESSION['listagem'] : [];
-    $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
+<?php
+session_start();
+
+if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
+    header('location: index.php?login=error2');
+}
+
+$listagem = isset($_SESSION['listagem']) ? $_SESSION['listagem'] : [];
+$busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
 
 ?>
 
@@ -68,8 +68,8 @@
                         </li>
                         <li class="list-group-item ">
                             <a href="busca.php">Log de E/S</a>
-                        </li>   
-                       
+                        </li>
+
 
 
                     </ul>
@@ -84,102 +84,99 @@
                                     <img src="img/list.png" class="pl-4 mb-2">
                                 </h4>
                                 <hr />
-                            
+
                                 <div class="row">
                                     <div class="col-md-3 d-flex pt-5">
-                                                <select class="custom-select inputs ml-auto" name="equipamento" id="equip" onchange="ListEquip()">
-                                                    <option selected>-- Selecione --</option>
-                                                    <option value="Todos">Todos</option>
-                                                    <option value="Computador">Computador</option>
-                                                    <option value="Monitor">Monitor</option>
-                                                    <option value="Notebook">Notebook</option>
-                                                    <option value="Impressora">Impressora</option>
-                                                </select>
+                                        <select class="custom-select inputs ml-auto" name="equipamento" id="equip"
+                                            onchange="ListEquip()">
+                                            <option selected>-- Selecione --</option>
+                                            <option value="Todos">Todos</option>
+                                            <option value="Computador">Computador</option>
+                                            <option value="Monitor">Monitor</option>
+                                            <option value="Notebook">Notebook</option>
+                                            <option value="Impressora">Impressora</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-5 ml-5 ">
                                         <form method="post" action="controller.php?action=read">
-                                            <div class="d-flex pt-5 pl-5">                                            
-                                                <div class="pl-5">                                                    
-                                                        <input type="text" class="form-control inputsearch" name="search" placeholder="buscar patrimônio"/>
+                                            <div class="d-flex pt-5 pl-5">
+                                                <div class="pl-5">
+                                                    <input type="text" class="form-control inputsearch" name="search"
+                                                        placeholder="buscar patrimônio" />
                                                 </div>
-                                                    <button id="search-button" class="btn btn-primary">
-                                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                                    </button>
+                                                <button id="search-button" class="btn btn-primary">
+                                                    <i class="fa-solid fa-magnifying-glass"></i>
+                                                </button>
                                             </div>
-                                            </form>
-                                        </div>
-                                    
-                                    <div class="col-md-2 mt-5 ml-auto ">
-                                        <div class="d-flex pl-2">                                            
-                                                <button class="btn btn-link ml-4 pl-5" onclick="imprimir('table')">
-                                                    <i class="fa-solid fa-print"></i>
-                                                    Imprimir
-                                                </button>                                          
-                                        </div>
-                                        
-                                                                              
+                                        </form>
                                     </div>
-                                    
-                                    
-                                        
-                                </div>
+
+                                    <div class="col-md-2 mt-5 ml-auto ">
+                                        <div class="d-flex pl-2">
+                                            <button class="btn btn-link ml-4 pl-5" onclick="imprimir('table')">
+                                                <i class="fa-solid fa-print"></i>
+                                                Imprimir
+                                            </button>
+                                        </div>
+
+
+                                    </div>
+
+
 
                                 </div>
-                                
 
-                                <table class="table table-striped" id="table">
+                            </div>
+
+
+                            <table class="table table-striped" id="table">
+                                <tr>
+                                    <th>Equipamento</th>
+                                    <th>Modelo</th>
+                                    <th>Patrimônio</th>
+                                    <th>Data da Entrega</th>
+                                    <th>Remover</th>
+                                </tr>
+
+                                <?php if ($busca != []) { ?>
                                     <tr>
-                                        <th>Equipamento</th>
-                                        <th>Modelo</th>
-                                        <th>Patrimônio</th>
-                                        <th>Data da Entrega</th>
-                                        <th>Remover</th>
-                                   </tr>
-                                   
-                                   <?php if ($busca != []) { ?>
-                                    <tr>
-                                        <td><?= $busca->equipamento?></td>
-                                        <td><?= ucfirst($busca->modelo)?></td>
-                                        <td><?= $busca->patrimonio?></td>
-                                        <td><?= implode("/", array_reverse(explode("-", $busca->data_entrada)))?></td>
+                                        <td id="tdequipamento"><?= $busca->equipamento ?></td>
+                                        <td id="tdmodelo"><?= ucfirst($busca->modelo) ?></td>
+                                        <td id="tdpatrimonio"><?= $busca->patrimonio ?></td>
+                                        <td><?= implode("/", array_reverse(explode("-", $busca->data_entrada))) ?></td>
                                         <td onclick="alertConfirm()" class="trash">
                                             <i class="fa-solid fa-trash pl-4"></i>
                                         </td>
                                     </tr>
-                                    <?php } ?>
-                                   
-                                       
-                                    <?php foreach ($listagem as $index => $item) { ?>
+                                <?php } ?>
 
-                                        <tr>
-                                            <td><?= $item->equipamento ?></td>
-                                            <td><?= ucfirst($item->modelo) ?></td>
-                                            <td><?= $item->patrimonio ?></td>
-                                            <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
-                                            <td onclick="alertConfirm()" class="trash">
-                                                <i class="fa-solid fa-trash pl-4"></i>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                    
 
-                                   
-                                </table>
+                                <?php foreach ($listagem as $index => $item) { ?>
+
+                                    <tr>
+                                        <td><?= $item->equipamento ?></td>
+                                        <td><?= ucfirst($item->modelo) ?></td>
+                                        <td><?= $item->patrimonio ?></td>
+                                        <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
+                                        <td onclick="alertConfirm()" class="trash">
+                                            <i class="fa-solid fa-trash pl-4"></i>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
 
 
 
+                            </table>
 
-                            </div>
+
+
+
                         </div>
                     </div>
-
                 </div>
+
             </div>
-
-
-
         </div>
-
 
     </section>
 
@@ -203,29 +200,30 @@
 
 <script>
 
-    function imprimir(id) {    
-        print(document.getElementById(id));           
+    function imprimir(id) {
+        print(document.getElementById(id));
     }
 
     function ListEquip() {
         value = document.getElementById('equip').value;
-        location.href = 'controller.php?action=filter&value='+value;
-        
+        location.href = 'controller.php?action=filter&value=' + value;
+
     }
 
-    /*function remove(equip,model,patrim) {
-        
+    function remove() {
+
+
+        location.href = "saida.php?";
+
     }
+
 
 
     function alertConfirm() {
-            if (confirm("Deseja Realmente excluir o Equipamento do Registro?")) {
-                equip = document.getElementById('buscaequip').value
-                model = document.getElementById('buscamodel').value
-                patrim = document.getElementById('buscapatrim').value
-                remove(parseInt(<?= $_GET['id'] ?>));
-            }
-    } */
+        if (confirm("Deseja Realmente excluir o Equipamento do Registro?")) {
+            remove();
+        }
+    }
 
 </script>
 
