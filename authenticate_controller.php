@@ -7,6 +7,7 @@ $usuario_autenticado = false;
 $usuario_app = array (
     array('login' => 'jefferson.maia', 'senha' => 'dezembro88'),
     array('login' => 'mauro.neves', 'senha' => '123456'),
+    array('login' => 'patrick.picorelli', 'senha' => 'qwerty123')
 );
 
 
