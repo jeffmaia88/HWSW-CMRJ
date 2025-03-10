@@ -139,13 +139,7 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                 </tr>
 
                                 <?php if ($busca != []) { ?>
-                                    <tr>
-                                        <th>Equipamento</th>
-                                        <th>Modelo</th>
-                                        <th>Patrimônio</th>
-                                        <th>Data da Entrega</th>
-                                        <th>Remover</th>
-                                   </tr>
+                                                                 
                                    
                                    <?php if ($busca != []) { ?>
                                     <tr>
@@ -158,18 +152,9 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                         </td>
                                     </tr>
                                 <?php } ?>
+                                <?php } ?>
 
-                                        <tr>
-                                            <td><?= $item->equipamento ?></td>
-                                            <td class="modelo"><?= ucfirst($item->modelo) ?></td>
-                                            <td class="patrimonio"><?= $item->patrimonio ?></td>
-                                            <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
-                                            <td onclick="alertConfirm(this)" class="trash">
-                                                <i class="fa-solid fa-trash pl-4"></i>
-                                            </td>
-                                        </tr>
-                                    <?php } ?>
-                                    
+                                                                          
 
                                 <?php foreach ($listagem as $index => $item) { ?>
 
@@ -178,7 +163,7 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                         <td><?= ucfirst($item->modelo) ?></td>
                                         <td><?= $item->patrimonio ?></td>
                                         <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
-                                        <td onclick="alertConfirm()" class="trash">
+                                        <td onclick="alertConfirm(this)" class="trash">
                                             <i class="fa-solid fa-trash pl-4"></i>
                                         </td>
                                     </tr>
