@@ -5,7 +5,7 @@ class Connection
 
 	private $host = '127.0.0.1:3312';
 	private $dbname = 'db_hardware';
-	private $user = 'root';
+	private $user = 'administrador';
 	private $pass = 'dezembro88';
 
 	public function conecting()
