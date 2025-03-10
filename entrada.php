@@ -1,9 +1,9 @@
-<?php 
-    session_start();
+<?php
+session_start();
 
-    if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
-        header('location: index.php?login=error2');
-    }    
+if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
+    header('location: index.php?login=error2');
+}
 
 ?>
 
@@ -52,6 +52,7 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-3">
+<<<<<<< HEAD
                     <button class="btn btn-outline-primary mb-5 d-md-none  ml-3" data-toggle="collapse" data-target="#sidebarLinks" aria-expanded="false"  aria-controls="sidebarLinks">
                      <span class="material-icons">
                         Expandir Menu
@@ -74,6 +75,23 @@
                             
                         </ul>
                     </div>
+=======
+                    <ul class="list-group">
+                        <li class="list-group-item ">
+                            <a href="entrada.php">Entrada de Patrimônio</a>
+                        </li>
+                        <li class="list-group-item ">
+                            <a href="saida.php">Saída de Patrimônio</a>
+                        </li>
+                        <li class=" list-group-item ">
+                            <a href="listar.php">Listagem de Estoque </a>
+                        </li>
+                        <li class="list-group-item ">
+                            <a href="busca.php">Log de E/S</a>
+                        </li>
+
+                    </ul>
+>>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
 
                 </div>
                 <!--Formulários -->
@@ -92,7 +110,12 @@
                                         <div class="col-sm-6"> <!-- coluna da esquerda -->
                                             <div class="form-group">
                                                 <label for="Equip"> Equipamento: </label>
+<<<<<<< HEAD
                                                 <select class="custom-select" name="equipamento" id="Equip" required>
+=======
+                                                <select class="custom-select inputs" name="equipamento" id="Equip"
+                                                    required>
+>>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                                                     <option selected></option>
                                                     <option value="Computador">Computador</option>
                                                     <option value="Monitor">Monitor</option>
@@ -103,27 +126,41 @@
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Modelo: </label>
+<<<<<<< HEAD
                                                 <input type="text" name="modelo" class="form-control" required >
+=======
+                                                <input type="text" name="modelo" class="form-control inputs2" required>
+>>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
+<<<<<<< HEAD
                                                 <input type="number" class="form-control" name="patrimonio" minlength="7" maxlength="7" equired>
+=======
+                                                <input type="number" class="form-control inputs" name="patrimonio"
+                                                    minlength="7" maxlength="7" equired>
+>>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                                             </div>
-                                            
-                                            
+
+
 
                                         </div>
                                         <div class="col-sm-6"> <!-- coluna da direita -->
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-3">Setor Origem:</label>
+<<<<<<< HEAD
                                                 <input type="text" name="origem" class="form-control"
                                                 required>
+=======
+                                                <input type="text" name="origem" class="form-control inputs" required>
+>>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Responsável:</label>
+<<<<<<< HEAD
                                                 <input type="text" name="responsavel" class="form-control"
                                                 required>
                                             </div>
@@ -131,8 +168,17 @@
                                                 <label for="Respons">Data de Entrada: </label>
                                                 <input type="date" class="form-control" name="data_entrada"
                                                 required>
+=======
+                                                <input type="text" name="responsavel" class="form-control inputs"
+                                                    required>
                                             </div>
-                                            
+                                            <div class="form-group">
+                                                <label for="Respons">Data de Entrada: </label>
+                                                <input type="date" class="form-control inputs" name="data_entrada"
+                                                    required>
+>>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
+                                            </div>
+
                                         </div>
                                         <button class="btn btn-success ml-auto mt-4">Cadastrar Entrada</button>
                                     </div>
@@ -141,11 +187,11 @@
                         </div>
                         <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
                             <div class="bg-primary pt-2 text-white d-flex justify-content-center mt-5">
-                                <h5>Equipamento Incluído com Sucesso</h5>
+                                <h5> Entrada de equipamento realizada com sucesso</h5>
                             </div>
-                    <?php } ?>
-                    </div>                    
-                </div>             
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
     </section>
 </body>
