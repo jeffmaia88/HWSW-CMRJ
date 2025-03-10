@@ -1,26 +1,28 @@
 <?php
 
-class Connection {
+class Connection
+{
 
 	private $host = '127.0.0.1:3312';
 	private $dbname = 'db_hardware';
-	private $user = 'administrador';
+	private $user = 'root';
 	private $pass = 'dezembro88';
 
-	public function conecting() {
+	public function conecting()
+	{
 		try {
 
 			$conexao = new PDO(
 				"mysql:host=$this->host;dbname=$this->dbname",
 				"$this->user",
-				"$this->pass"				
+				"$this->pass"
 			);
 
 			return $conexao;
 
 
 		} catch (PDOException $e) {
-			echo '<p>'.$e->getMessage().'</p>';
+			echo '<p>' . $e->getMessage() . '</p>';
 		}
 	}
 }
