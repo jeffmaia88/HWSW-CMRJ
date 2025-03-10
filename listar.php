@@ -139,10 +139,10 @@
                                    <?php if ($busca != []) { ?>
                                     <tr>
                                         <td><?= $busca->equipamento?></td>
-                                        <td><?= ucfirst($busca->modelo)?></td>
-                                        <td><?= $busca->patrimonio?></td>
+                                        <td class="modelo"><?= ucfirst($busca->modelo)?></td>
+                                        <td class="patrimonio"><?= $busca->patrimonio?></td>
                                         <td><?= implode("/", array_reverse(explode("-", $busca->data_entrada)))?></td>
-                                        <td onclick="alertConfirm()" class="trash">
+                                        <td onclick="alertConfirm(this)" class="trash">
                                             <i class="fa-solid fa-trash pl-4"></i>
                                         </td>
                                     </tr>
@@ -153,10 +153,10 @@
 
                                         <tr>
                                             <td><?= $item->equipamento ?></td>
-                                            <td><?= ucfirst($item->modelo) ?></td>
-                                            <td><?= $item->patrimonio ?></td>
+                                            <td class="modelo"><?= ucfirst($item->modelo) ?></td>
+                                            <td class="patrimonio"><?= $item->patrimonio ?></td>
                                             <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
-                                            <td onclick="alertConfirm()" class="trash">
+                                            <td onclick="alertConfirm(this)" class="trash">
                                                 <i class="fa-solid fa-trash pl-4"></i>
                                             </td>
                                         </tr>
@@ -201,34 +201,6 @@
 
 <script type="text/javascript" src="https://example.com/fontawesome/v6.6.0/js/conflict-detection.js"></script>
 
-<script>
-
-    function imprimir(id) {    
-        print(document.getElementById(id));           
-    }
-
-    function ListEquip() {
-        value = document.getElementById('equip').value;
-        location.href = 'controller.php?action=filter&value='+value;
-        
-    }
-
-    /*function remove(equip,model,patrim) {
-        
-    }
-
-
-    function alertConfirm() {
-            if (confirm("Deseja Realmente excluir o Equipamento do Registro?")) {
-                equip = document.getElementById('buscaequip').value
-                model = document.getElementById('buscamodel').value
-                patrim = document.getElementById('buscapatrim').value
-                remove(parseInt(<?= $_GET['id'] ?>));
-            }
-    } */
-
-</script>
-
-
+<script src="scripts/scripts.js"></script>
 
 </html>

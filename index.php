@@ -19,7 +19,7 @@
 <body>
 
     <!--Cabeçalho e Barra Superior-->
-    <nav class="navbar navbar-expand-sm navbar-nav " id="upbar">
+    <nav class="navbar navbar-expand-sm navbar-nav" id="upbar">
         <div class="container">
             <a href="#" id="link-cmrj">
                 <img src="img/logo.jpg">

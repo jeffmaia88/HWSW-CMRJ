@@ -41,19 +41,6 @@
 
 /*------------------------------------------------ Inputs ---------------------------------------*/
 
-.inputs {
-    margin-left: 5px;
-    width: 350px;
-    display: inline;
-
-}
-
-.inputs2 {
-    margin-left: 20px;
-    width: 350px;
-    display: inline;
-
-}
 
 .inputsearch {
 
@@ -70,4 +57,28 @@
 
 .trash:hover {
     cursor: pointer;
+}
+
+
+/* ---------------------------------------------- Media Querys -------------------------------------*/
+
+@media  (max-width: 992px) {
+    
+    #logoname {
+        font-size: 0.8rem;
+    }
+
+    .link-cmrj {
+        margin-left: 5px;
+    }
+
+    #list-links {
+        margin-bottom: 20px;
+    }
+
+    #link-logoff {
+        margin-left: auto;
+    }
+    
+
 }
