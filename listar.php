@@ -140,7 +140,6 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
 
                                 <?php if ($busca != []) { ?>
                                     <tr>
-<<<<<<< HEAD
                                         <th>Equipamento</th>
                                         <th>Modelo</th>
                                         <th>Patrimônio</th>
@@ -155,19 +154,11 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                         <td class="patrimonio"><?= $busca->patrimonio?></td>
                                         <td><?= implode("/", array_reverse(explode("-", $busca->data_entrada)))?></td>
                                         <td onclick="alertConfirm(this)" class="trash">
-=======
-                                        <td id="tdequipamento"><?= $busca->equipamento ?></td>
-                                        <td id="tdmodelo"><?= ucfirst($busca->modelo) ?></td>
-                                        <td id="tdpatrimonio"><?= $busca->patrimonio ?></td>
-                                        <td><?= implode("/", array_reverse(explode("-", $busca->data_entrada))) ?></td>
-                                        <td onclick="alertConfirm()" class="trash">
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                                             <i class="fa-solid fa-trash pl-4"></i>
                                         </td>
                                     </tr>
                                 <?php } ?>
 
-<<<<<<< HEAD
                                         <tr>
                                             <td><?= $item->equipamento ?></td>
                                             <td class="modelo"><?= ucfirst($item->modelo) ?></td>
@@ -179,8 +170,6 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                         </tr>
                                     <?php } ?>
                                     
-=======
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
 
                                 <?php foreach ($listagem as $index => $item) { ?>
 
@@ -229,39 +218,6 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
 
 <script type="text/javascript" src="https://example.com/fontawesome/v6.6.0/js/conflict-detection.js"></script>
 
-<<<<<<< HEAD
 <script src="scripts/scripts.js"></script>
-=======
-<script>
-
-    function imprimir(id) {
-        print(document.getElementById(id));
-    }
-
-    function ListEquip() {
-        value = document.getElementById('equip').value;
-        location.href = 'controller.php?action=filter&value=' + value;
-
-    }
-
-    function remove() {
-
-
-        location.href = "saida.php?";
-
-    }
-
-
-
-    function alertConfirm() {
-        if (confirm("Deseja Realmente excluir o Equipamento do Registro?")) {
-            remove();
-        }
-    }
-
-</script>
-
-
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
 
 </html>

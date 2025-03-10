@@ -55,7 +55,6 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-3">
-<<<<<<< HEAD
                     <button class="btn btn-outline-primary mb-5 d-md-none  ml-3" data-toggle="collapse" data-target="#sidebarLinks" aria-expanded="false"  aria-controls="sidebarLinks">
                      <span class="material-icons">
                         Expandir Menu
@@ -78,25 +77,6 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                             
                         </ul>
                     </div>
-=======
-                    <ul class="list-group">
-                        <li class="list-group-item ">
-                            <a href="entrada.php">Entrada de Patrimônio</a>
-                            </l>
-                        <li class="list-group-item ">
-                            <a href="saida.php">Saída de Patrimônio</a>
-                        </li>
-                        <li class=" list-group-item ">
-                            <a href="listar.php">Listagem de Estoque </a>
-                        </li>
-                        <li class="list-group-item ">
-                            <a href="busca.php">Log de E/S</a>
-                        </li>
-
-
-
-                    </ul>
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
 
                 </div>
                 <!--Formulários -->
@@ -115,12 +95,7 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                                         <div class="col-sm-6"> <!-- coluna da esquerda -->
                                             <div class="form-group">
                                                 <label for="Equip"> Equipamento: </label>
-<<<<<<< HEAD
                                                 <select class="custom-select" name="equipamento" id="Equip" required>
-=======
-                                                <select class="custom-select inputs" name="equipamento" id="equip"
-                                                    required>
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                                                     <option selected></option>
                                                     <option value="Computador">Computador</option>
                                                     <option value="Monitor">Monitor</option>
@@ -131,44 +106,27 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Modelo: </label>
-<<<<<<< HEAD
                                                 <input type="text" name="modelo" class="form-control" required >
-=======
-                                                <input type="text" name="modelo" class="form-control inputs2"
-                                                    id="modelo" required>
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
-<<<<<<< HEAD
                                                 <input type="number" class="form-control" name="patrimonio" minlength="7" maxlength="7" equired>
                                             </div>
                                             
                                             
-=======
-                                                <input type="text" class="form-control inputs" name="patrimonio"
-                                                    id="patrimonio" required>
-                                            </div>
-
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
 
                                         </div>
                                         <div class="col-sm-6"> <!-- coluna da direita -->
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-3">Setor Destino:</label>
-<<<<<<< HEAD
                                                 <input type="text" name="destino" class="form-control"
                                                 required>
-=======
-                                                <input type="text" name="destino" class="form-control inputs" required>
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Responsável:</label>
-<<<<<<< HEAD
                                                 <input type="text" name="responsavel" class="form-control"
                                                 required>
                                             </div>
@@ -176,15 +134,6 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                                                 <label for="Respons">Data de Saída: </label>
                                                 <input type="date" class="form-control" name="data_saida"
                                                 required>
-=======
-                                                <input type="text" name="responsavel" class="form-control inputs"
-                                                    required>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="Respons">Data de Saida: </label>
-                                                <input type="date" class="form-control inputs" name="data_saida"
-                                                    required>
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                                             </div>
 
                                         </div>
@@ -195,11 +144,7 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                         </div>
                         <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
                             <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5">
-<<<<<<< HEAD
                                 <h5>Saída Realizada com Sucesso</h5>
-=======
-                                <h5>Saída de equipamento realizada com sucesso</h5>
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
                             </div>
                         <?php } ?>
                     </div>
@@ -208,7 +153,6 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
     </section>
 </body>
 
-<<<<<<< HEAD
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!-- Popper.js (obrigatório para dropdowns e tooltips) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
@@ -221,14 +165,5 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
         window.onload = recuperarDados();
     </script>
     
-=======
-
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
->>>>>>> 8614797e70ab85bead4e2fefe9c752e037c22fd0
 
 </html>
