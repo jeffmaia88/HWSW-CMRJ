@@ -1,10 +1,10 @@
 <?php
 
-require "../../HWSW-CMRJ-private/entrada.model.php";
-require "../../HWSW-CMRJ-private/saida.model.php";
-require "../../HWSW-CMRJ-private/saida.service.php";
-require "../../HWSW-CMRJ-private/service.php";
-require "../../HWSW-CMRJ-private/connection.php";
+require "../../private/entrada.model.php";
+require "../../private/saida.model.php";
+require "../../private/saida.service.php";
+require "../../private/service.php";
+require "../../private/connection.php";
 
 
 
