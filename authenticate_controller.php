@@ -1,6 +1,6 @@
 <?php 
 
-require '../../HWSW-CMRJ-private/authenticate_controller.php';
+require '../../private/authenticate_controller.php';
 
 
 ?>

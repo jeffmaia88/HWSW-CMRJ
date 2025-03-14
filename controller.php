@@ -1,6 +1,6 @@
 <?php
 
-require '../../HWSW-CMRJ-private/controller.php';
+require '../../private/controller.php';
 
 
 ?>

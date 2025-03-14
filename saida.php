@@ -89,13 +89,7 @@
                                         <div class="col-sm-6"> <!-- coluna da esquerda -->
                                             <div class="form-group">
                                                 <label for="equip"> Equipamento: </label>
-                                                <!--<select class="custom-select" name="equipamento" id="Equip" readonly>
-                                                    <option selected></option>
-                                                    <option value="Computador">Computador</option>
-                                                    <option value="Monitor">Monitor</option>
-                                                    <option value="Notebook">Notebook</option>
-                                                    <option value="Impressora">Impressora</option>
-                                                </select> -->
+                                               
                                                 <input type="text" class="form-control" name="equipamento" id="equipamento" readonly>
                                             </div>
 
@@ -106,7 +100,7 @@
 
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
-                                                <input type="number" class="form-control" name="patrimonio" minlength="7" maxlength="7" readonly>
+                                                <input type="number" class="form-control" name="patrimonio" readonly>
                                             </div>
                                             
                                             
