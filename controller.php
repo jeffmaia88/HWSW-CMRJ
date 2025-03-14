@@ -60,7 +60,7 @@ if ($action == 'insertEntry') {
 
     $key = new Entrada();
     $connection = new connection();
-    $key->__set('patrimonio', $_POST['search']);
+    $key->__set('patrimonio', trim($_POST['search']));
 
     $entradaService = new EntradaService($connection, $key);
     $entradaService->read();
