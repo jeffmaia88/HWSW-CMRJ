@@ -12,34 +12,38 @@ function ListEquip() {
 
 function alertConfirm(element) {
 
-        row = element.closest('tr');
+    row = element.closest('tr');
 
-        equipamento = row.cells[0].innerText;
-        modelo = row.cells[1].innerText;
-        patrimonio = row.cells[2].innerText;
-        
-        if (confirm("Deseja Realmente excluir o Equipamento do Registro?")) {                    
-                localStorage.setItem('equipamento', equipamento);
-                localStorage.setItem('modelo', modelo);
-                localStorage.setItem('patrimonio', patrimonio);
-        
-                location.href = 'saida.php';
-        }     
-        
+    equipamento = row.cells[0].innerText;
+    modelo = row.cells[1].innerText;
+    patrimonio = row.cells[2].innerText;
+    
+    if (confirm("Deseja Realmente excluir o Equipamento do Registro?")) {                    
+            localStorage.setItem('equipamento', equipamento);
+            localStorage.setItem('modelo', modelo);
+            localStorage.setItem('patrimonio', patrimonio);
+    
+            location.href = 'saida.php';
+    }     
+    
 }
 
 function recuperarDados() {
+   
+    document.querySelector('input[name="equipamento"]').value = localStorage.getItem('equipamento') || '';
+    document.querySelector('input[name="modelo"]').value = localStorage.getItem('modelo') || '';
+    document.querySelector('input[name="patrimonio"]').value = localStorage.getItem('patrimonio') || '';
 
-    equipamento = localStorage.getItem('equipamento');
-    modelo = localStorage.getItem('modelo');
-    patrimonio = localStorage.getItem('patrimonio');
-
-
-    document.querySelector('select[name=equipamento]').value = equipamento || '';
-    document.querySelector('input[name="modelo"]').value = modelo || '';
-    document.querySelector('input[name="patrimonio"]').value = patrimonio || '';
 
     localStorage.removeItem('equipamento');
     localStorage.removeItem('modelo');
     localStorage.removeItem('patrimonio');
 }
+
+
+
+
+
+
+
+

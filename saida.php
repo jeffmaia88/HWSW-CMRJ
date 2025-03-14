@@ -1,14 +1,11 @@
-<?php
-session_start();
+<?php 
+    session_start();
 
-if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
-    header('location: index.php?login=error2');
-}
+    if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
+        header('location: index.php?login=error2');
+    }    
 
 ?>
-
-
-<?php ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -94,24 +91,25 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
 
                                         <div class="col-sm-6"> <!-- coluna da esquerda -->
                                             <div class="form-group">
-                                                <label for="Equip"> Equipamento: </label>
-                                                <select class="custom-select" name="equipamento" id="Equip" required>
+                                                <label for="equip"> Equipamento: </label>
+                                                <!--<select class="custom-select" name="equipamento" id="Equip" readonly>
                                                     <option selected></option>
                                                     <option value="Computador">Computador</option>
                                                     <option value="Monitor">Monitor</option>
                                                     <option value="Notebook">Notebook</option>
                                                     <option value="Impressora">Impressora</option>
-                                                </select>
+                                                </select> -->
+                                                <input type="text" class="form-control" name="equipamento" id="equipamento" readonly>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Modelo: </label>
-                                                <input type="text" name="modelo" class="form-control" required >
+                                                <input type="text" name="modelo" class="form-control" readonly>
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
-                                                <input type="number" class="form-control" name="patrimonio" minlength="7" maxlength="7" equired>
+                                                <input type="number" class="form-control" name="patrimonio" minlength="7" maxlength="7" readonly>
                                             </div>
                                             
                                             
@@ -135,7 +133,7 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                                                 <input type="date" class="form-control" name="data_saida"
                                                 required>
                                             </div>
-
+                                            
                                         </div>
                                         <button class="btn btn-danger ml-auto mt-4">Realizar Saída</button>
                                     </div>
@@ -146,9 +144,9 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                             <div class="bg-danger pt-2 text-white d-flex justify-content-center mt-5">
                                 <h5>Saída Realizada com Sucesso</h5>
                             </div>
-                        <?php } ?>
-                    </div>
-                </div>
+                    <?php } ?>
+                    </div>                    
+                </div>             
             </div>
     </section>
 </body>
