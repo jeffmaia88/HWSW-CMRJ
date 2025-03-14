@@ -59,10 +59,7 @@
                     <ul class="list-group">
                         <li class="list-group-item ">
                             <a href="entrada.php">Entrada de Patrimônio</a>
-                        </li>
-                        <li class="list-group-item ">
-                            <a href="saida.php">Saída de Patrimônio</a>
-                        </li>
+                        </li>                      
                         <li class=" list-group-item ">
                             <a href="listar.php">Listagem de Estoque </a>
                         </li>

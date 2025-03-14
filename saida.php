@@ -61,10 +61,7 @@
                         <ul class="list-group" id="list-links">
                             <li class="list-group-item ">
                                 <a href="entrada.php">Entrada de Patrimônio</a>
-                            </li>
-                            <li class="list-group-item ">
-                                <a href="saida.php">Saída de Patrimônio</a>
-                            </li>
+                            </li>                           
                             <li class=" list-group-item ">
                                 <a href="listar.php">Listagem de Estoque </a>
                             </li>
@@ -81,7 +78,7 @@
                     <div class="container pagina">
                         <div class="row">
                             <div class="col">
-                                <h4>Entrada de Patrimônio
+                                <h4>Saída de Patrimônio
                                     <img src="img/sub.png" class="pl-4 mb-2">
                                 </h4>
                                 <hr>

@@ -62,10 +62,7 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                         <ul class="list-group" id="list-links">
                             <li class="list-group-item ">
                                 <a href="entrada.php">Entrada de Patrimônio</a>
-                            </li>
-                            <li class="list-group-item ">
-                                <a href="saida.php">Saída de Patrimônio</a>
-                            </li>
+                            </li>                           
                             <li class=" list-group-item ">
                                 <a href="listar.php">Listagem de Estoque </a>
                             </li>
