@@ -9,6 +9,7 @@ private $responsavel;
 private $patrimonio;
 private $origem;
 private $data_entrada;
+private $baixado;
 
 
 public function __get($atribute) {

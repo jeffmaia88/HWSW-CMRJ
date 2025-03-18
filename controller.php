@@ -22,6 +22,7 @@ if ($action == 'insertEntry') {
     $entrada->__set('origem', $_POST['origem']);
     $entrada->__set('responsavel', $_POST['responsavel']);
     $entrada->__set('data_entrada', $_POST['data_entrada']);
+    $entrada->__set('baixado', isset($_POST['baixado'])? 1 :0);
 
 
     $connection = new Connection();
@@ -66,6 +67,14 @@ if ($action == 'insertEntry') {
     $entradaService->read();
 
     $search = $entradaService->read();
+
+    if($search->baixado == 0) {
+            $search->baixado = 'NÃO';
+        }else {
+            $search->baixado = "SIM";
+        } 
+    
+
 
     session_start();
     $_SESSION['search'] = $search;
@@ -122,8 +131,16 @@ if ($action == 'insertEntry') {
     $entradaService = new EntradaService($connection, $listar);
     $listagem = $entradaService->filter();
 
+    foreach($listagem as $index => $item) {
+        if($item->baixado == 0) {
+            $item->baixado = 'NÃO';
+        }else {
+            $item->baixado = "SIM";
+        } 
+    }
+
     session_start();
-    $_SESSION['listagem'] = $listagem;
+    $_SESSION['listagem'] = $listagem;  
 
     header("Location: listar.php");
         
