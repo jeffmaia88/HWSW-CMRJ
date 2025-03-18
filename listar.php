@@ -17,6 +17,9 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -108,7 +111,7 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                             <div class="d-flex pt-5 pl-5">
                                                 <div class="pl-5">
                                                     <input type="text" class="form-control inputsearch" name="search"
-                                                        placeholder="buscar patrimônio" />
+                                                        placeholder="buscar patrimônio"  required/>
                                                 </div>
                                                 <button id="search-button" class="btn btn-primary">
                                                     <i class="fa-solid fa-magnifying-glass"></i>
