@@ -79,6 +79,10 @@
     #link-logoff {
         margin-left: auto;
     }
+
+    .small-table tr {
+        font-size: 0.5rem;
+    }
     
 
 }

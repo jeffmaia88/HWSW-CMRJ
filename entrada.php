@@ -5,6 +5,8 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
     header('location: index.php?login=error2');
 }
 
+$usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
+
 ?>
 
 <!DOCTYPE html>
@@ -41,10 +43,7 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
         </div>
     </nav>
 
-    <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar-principal">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
+   
     <!--Corpo do Site -->
     <!-- Links Laterais -->
 
@@ -69,7 +68,6 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                             <li class="list-group-item ">
                                 <a href="busca.php">Log de E/S</a>
                             </li>
-
                         </ul>
                     </div>
                 </div>
@@ -98,10 +96,7 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                                                 </select>
                                             </div>
 
-                                            <!--<div class="form-group">
-                                                <label for="Respons" class="mr-4">Modelo: </label>
-                                                <input type="text" name="modelo" class="form-control" required >
-                                            </div> -->
+                                           
                                             <div class="form-group">
                                                 <label for="Modelo">Modelo:</label>
                                                 <select class="custom-select mr-4" name="modelo" id="Modelo" required>
@@ -114,11 +109,18 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
                                                 <input type="number" class="form-control" name="patrimonio" minlength="7"
-                                                    maxlength="7" equired>
+                                                    maxlength="7" required>
                                             </div>
+
+                                            <div class="form-group ml-3 p-1">
+                                                <input type="checkbox" class="form-check-input" name="baixado" value="1" id="baixa">
+                                                <label for="baixa" class="form-check-label">Equipamento Baixado </label>                                                
+                                            </div>
+
+
                                         </div>
                                     
-                                            <div class="col-sm-6"> <!-- coluna da direita -->
+                                        <div class="col-sm-6"> <!-- coluna da direita -->
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-3">Setor Origem:</label>
@@ -127,16 +129,16 @@ if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Responsável:</label>
-                                                <input type="text" name="responsavel" class="form-control" required>
+                                                <input type="text" name="responsavel" class="form-control" value="<?= $usuario ?>" readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="Respons">Data de Entrada: </label>
                                                 <input type="date" class="form-control" name="data_entrada" required>
                                             </div>
 
+                                        </div>
+                                        <button class="btn btn-success ml-auto mt-4">Cadastrar Entrada</button>
                                     </div>
-                                    <button class="btn btn-success ml-auto mt-4">Cadastrar Entrada</button>
-                            </div>
                             </form>
                         </div>
                     </div>

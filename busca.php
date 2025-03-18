@@ -56,30 +56,34 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-3">
-                    <ul class="list-group">
-                        <li class="list-group-item ">
-                            <a href="entrada.php">Entrada de Patrimônio</a>
-                        </li>                      
-                        <li class=" list-group-item ">
-                            <a href="listar.php">Listagem de Estoque </a>
-                        </li>
-                        <li class="list-group-item ">
-                            <a href="busca.php">Log de E/S</a>
-                        </li>   
-                        
-
-
-                    </ul>
-
+                    <button class="btn btn-outline-primary mb-5 d-md-none  ml-3" data-toggle="collapse"
+                        data-target="#sidebarLinks" aria-expanded="false" aria-controls="sidebarLinks">
+                        <span class="material-icons">
+                            Expandir Menu
+                        </span>
+                    </button>
+                    <div class="collapse d-md-block" id="sidebarLinks">
+                        <ul class="list-group" id="list-links">
+                            <li class="list-group-item ">
+                                <a href="entrada.php">Entrada de Patrimônio</a>
+                            </li>                           
+                            <li class=" list-group-item ">
+                                <a href="listar.php">Listagem de Estoque </a>
+                            </li>
+                            <li class="list-group-item ">
+                                <a href="busca.php">Log de E/S</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!--Formulários -->
                 <div class="col-md-9">
                     <div class="container pagina">
                         <div class="row">
                             <div class="col-md-12">
-                                <h4>Busca de Entrada de Patrimônio
+                                <h5>Entrada de Patrimônio
                                     <img src="img/entry.png" class="pb-2">
-                                </h4>
+                                </h5>
                                 <hr id="row-search">
 
                                 <div class="row pt-5">
@@ -102,14 +106,14 @@
                                 <div class="row mt-3">
                                     <div class="col-md-12">
 
-                                            <table class="table table-striped">
+                                            <table class="table table-striped small-table">
                                                 <tr>
                                                     <th>Equipamento</th>
                                                     <th>Modelo</th>
                                                     <th>Patrimônio</th>
-                                                    <th>Setor de Origem</th>
+                                                    <th>Origem</th>
                                                     <th>Responsável</th>
-                                                    <th>Data de entrada</th>
+                                                    <th>Entrada</th>
                                                     
                                                 </tr>
 
@@ -145,9 +149,9 @@
                                                 
                         <div class="row" id="search-exit">
                             <div class="col-md-12">
-                                <h4>Busca de Saída de Patrimônio
+                                <h5>Saída de Patrimônio
                                 <img src="img/exit.png" class="pb-2">
-                                </h4>
+                                </h5>
                                 <hr id="row-search">
 
                                 <div class="row mt-5">
@@ -172,14 +176,14 @@
 
 
                                         
-                                            <table class="table table-striped">
+                                            <table class="table table-striped small-table">
                                                 <tr>
                                                     <th>Equipamento</th>
                                                     <th>Modelo</th>
                                                     <th>Patrimônio</th>
-                                                    <th>Setor Destino</th>
+                                                    <th>Destino</th>
                                                     <th>Responsável</th>
-                                                    <th>Data de Saida</th>
+                                                    <th>Saida</th>
                                                     
                                                 </tr>
 
@@ -234,12 +238,11 @@
 
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Popper.js (obrigatório para dropdowns e tooltips) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 
 

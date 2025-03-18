@@ -56,21 +56,25 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-3">
-                    <ul class="list-group">
-                        <li class="list-group-item ">
-                            <a href="entrada.php">Entrada de Patrimônio</a>
-                        </li>                       
-                        <li class=" list-group-item ">
-                            <a href="listar.php">Listagem de Estoque </a>
-                        </li>
-                        <li class="list-group-item ">
-                            <a href="busca.php">Log de E/S</a>
-                        </li>
-
-
-
-                    </ul>
-
+                    <button class="btn btn-outline-primary mb-5 d-md-none  ml-3" data-toggle="collapse"
+                        data-target="#sidebarLinks" aria-expanded="false" aria-controls="sidebarLinks">
+                        <span class="material-icons">
+                            Expandir Menu
+                        </span>
+                    </button>
+                    <div class="collapse d-md-block" id="sidebarLinks">
+                        <ul class="list-group" id="list-links">
+                            <li class="list-group-item ">
+                                <a href="entrada.php">Entrada de Patrimônio</a>
+                            </li>                           
+                            <li class=" list-group-item ">
+                                <a href="listar.php">Listagem de Estoque </a>
+                            </li>
+                            <li class="list-group-item ">
+                                <a href="busca.php">Log de E/S</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
                 <!--Formulários -->
                 <div class="col-md-9">
@@ -87,11 +91,16 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                         <select class="custom-select inputs ml-auto" name="equipamento" id="equip"
                                             onchange="ListEquip()">
                                             <option selected>-- Selecione --</option>
-                                            <option value="Todos">Todos</option>
-                                            <option value="Computador">Computador</option>
-                                            <option value="Monitor">Monitor</option>
-                                            <option value="Notebook">Notebook</option>
-                                            <option value="Impressora">Impressora</option>
+                                            <optgroup label="Ativos">
+                                                <option value="Todos">Todos</option>
+                                                <option value="Computador">Computador</option>
+                                                <option value="Monitor">Monitor</option>
+                                                <option value="Notebook">Notebook</option>
+                                                <option value="Impressora">Impressora</option>
+                                            </optgroup>
+                                            <optgroup label="Baixados">
+                                                <option value="Baixado">Baixados</option>
+                                            </optgroup>
                                         </select>
                                     </div>
                                     <div class="col-md-5 ml-5 ">
@@ -126,12 +135,13 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                             </div>
 
 
-                            <table class="table table-striped" id="table">
+                            <table class="table table-striped small-table">
                                 <tr>
                                     <th>Equipamento</th>
                                     <th>Modelo</th>
                                     <th>Patrimônio</th>
-                                    <th>Data da Entrega</th>
+                                    <th>Entrega</th>
+                                    <th>Baixa</th>
                                     <th>Remover</th>
                                 </tr>
 
@@ -141,9 +151,10 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                    <?php if ($busca != []) { ?>
                                     <tr>
                                         <td><?= $busca->equipamento?></td>
-                                        <td class="modelo"><?= ucfirst($busca->modelo)?></td>
-                                        <td class="patrimonio"><?= $busca->patrimonio?></td>
+                                        <td><?= ucfirst($busca->modelo)?></td>
+                                        <td><?= $busca->patrimonio?></td>
                                         <td><?= implode("/", array_reverse(explode("-", $busca->data_entrada)))?></td>
+                                        <td><?= $busca->baixado?></td>
                                         <td onclick="alertConfirm(this)" class="trash">
                                             <i class="fa-solid fa-trash pl-4"></i>
                                         </td>
@@ -160,6 +171,7 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                         <td><?= ucfirst($item->modelo) ?></td>
                                         <td><?= $item->patrimonio ?></td>
                                         <td><?= implode("/", array_reverse(explode("-", $item->data_entrada))) ?></td>
+                                        <td><?= $item->baixado?></td>
                                         <td onclick="alertConfirm(this)" class="trash">
                                             <i class="fa-solid fa-trash pl-4"></i>
                                         </td>
@@ -191,12 +203,11 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
 
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-    crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-    integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-    crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!-- Popper.js (obrigatório para dropdowns e tooltips) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
 <script type="text/javascript" src="https://example.com/fontawesome/v6.6.0/js/conflict-detection.js"></script>
 

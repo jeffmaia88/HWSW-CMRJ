@@ -3,7 +3,9 @@
 
     if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
         header('location: index.php?login=error2');
-    }    
+    }
+    
+    $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
 
 ?>
 
@@ -116,8 +118,8 @@
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-4">Responsável:</label>
-                                                <input type="text" name="responsavel" class="form-control"
-                                                required>
+                                                <input type="text" name="responsavel" class="form-control" value="<?= $usuario ?>"
+                                                readonly>
                                             </div>
                                             <div class="form-group">
                                                 <label for="Respons">Data de Saída: </label>
