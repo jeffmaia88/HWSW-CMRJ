@@ -1,5 +1,5 @@
 <?php 
-
+// model da Classe Entrada
 class Entrada {
 
 private $id;

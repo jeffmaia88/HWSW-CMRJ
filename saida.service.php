@@ -12,6 +12,7 @@ class SaidaService
 		$this->saida = $saida;
 	}
 
+	//método de inserção na tb_saida
 	public function insert()
 	{ //create
 		$query = 'insert into tb_saida(equipamento,modelo,patrimonio,destino,responsavel,data_saida)values(:equipamento,:modelo, :patrimonio,:destino, :responsavel, :data_saida)';
@@ -25,8 +26,9 @@ class SaidaService
 		$stmt->execute();
 	}
 
+	//método de busca na tb_saida e retorno para o <table> na area saida em busca.php
 	public function readExit()
-	{
+	{//read
 
 		$query = 'select id,equipamento,modelo,patrimonio,destino,responsavel,data_saida from tb_saida where patrimonio = :search';
 		$stmt = $this->conexao->prepare($query);
@@ -35,17 +37,9 @@ class SaidaService
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
 
-	public function remove()
-	{
-		$query = 'delete from tb_saida where id = :id';
-		$stmt = $this->conexao->prepare($query);
-		$stmt->bindValue(':id', $this->saida->__get('id'));
-		$stmt->execute();
-
-	}
-
+	//método de remoção da tb_estoque
 	public function removeEstoque()
-	{
+	{//remove
 		$query = 'delete from tb_estoque where patrimonio = :patrimonio';
 		$stmt = $this->conexao->prepare($query);
 		$stmt->bindValue(':patrimonio', $this->saida->__get('patrimonio'));

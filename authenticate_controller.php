@@ -3,7 +3,7 @@
 session_start();
 
 $usuario_autenticado = false;
-
+//3 usuários feito de forma hardcode para autenticação básica
 $usuario_app = array (
     array('login' => 'jefferson.maia', 'senha' => 'dezembro88', 'nome' => 'Jefferson'),
     array('login' => 'mauro.neves', 'senha' => '123456', 'nome' => 'Mauro'),
@@ -11,7 +11,7 @@ $usuario_app = array (
 );
 
 
-
+//comparação de dados obtidos do form da pagina index.php com array $usuario_app
 foreach($usuario_app as $user) {
     
     if($user['login'] == strtolower($_POST['login']) && $user['senha'] == $_POST['password']) {
@@ -20,7 +20,7 @@ foreach($usuario_app as $user) {
     }
 }
 
-
+//lógica de permissão e negação de entrada
 if ($usuario_autenticado) {
     $_SESSION['autenticado'] = 'SIM';
     header('location: entrada.php');

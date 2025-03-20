@@ -13,6 +13,7 @@ class EntradaService
 		$this->entrada = $entrada;
 	}
 
+	//método de inserção na tb_entrada
 	public function insert()
 	{ //create
 		$query = 'insert into tb_entrada(equipamento,modelo,patrimonio,origem,responsavel,data_entrada,baixado)values(:equipamento,:modelo, :patrimonio,:origem, :responsavel, :data_entrada, :baixado)';
@@ -30,6 +31,7 @@ class EntradaService
 
 	}
 
+	//método de inserção na tb_estoque
 	public function insertEstoque()
 	{
 
@@ -44,6 +46,8 @@ class EntradaService
 
 	}
 
+	
+	//método de busca na tb_estoque e retorno de 1 resultado para o <table> em listar.php
 	public function read()
 	{
 		$query = 'select equipamento, modelo, patrimonio, data_entrada,baixado from tb_estoque where patrimonio = :search';
@@ -53,6 +57,8 @@ class EntradaService
 		return $stmt->fetch(PDO::FETCH_OBJ);
 	}
 
+	
+	//método de busca na tb_entrada e retorno para o <table> na area entrada em busca.php
 	public function readEntry()
 	{
 
@@ -63,29 +69,25 @@ class EntradaService
 		return $stmt->fetchAll(PDO::FETCH_OBJ);
 	}
 
-	public function remove()
-	{
-		$query = 'delete from tb_entrada where id = :id';
-		$stmt = $this->conexao->prepare($query);
-		$stmt->bindValue(':id', $this->entrada->__get('id'));
-		$stmt->execute();
-
-	}
-
+	//método de busca na tb_estoque com base no value do option do select em listar.php
 	public function filter()
 	{
 		$valor = $this->entrada->__get('equipamento');
 
+		//retorna todos os valores
 		if ($valor == 'Todos') {
 			$query = 'select equipamento,modelo,patrimonio,data_entrada,baixado from tb_estoque order by equipamento ASC, patrimonio ASC ';
 			$stmt = $this->conexao->prepare($query);
 			$stmt->execute();
 			return $stmt->fetchAll(PDO::FETCH_OBJ);
+		//retorna somente os equipmamentos que contenham a chave Baixado em 1 no tb_estoque	
 		} else if ($valor == 'Baixado') {
 			$query = 'select equipamento,modelo,patrimonio,data_entrada,baixado from tb_estoque where baixado = 1 order by equipamento ASC, patrimonio ASC ';
 			$stmt = $this->conexao->prepare($query);
 			$stmt->execute();
 			return $stmt->fetchAll(PDO::FETCH_OBJ);
+			
+		//retorna os equipamento de acordo com o value selecionado e que contenham a chave Baixado em 0 no tb_estoque	
 		} else {
 			$query = 'select equipamento,modelo,patrimonio,data_entrada,baixado from tb_estoque where equipamento = :equipamento and baixado = 0 order by patrimonio ASC ';
 			$stmt = $this->conexao->prepare($query);

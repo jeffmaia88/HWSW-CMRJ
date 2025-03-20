@@ -1,5 +1,5 @@
 <?php
-
+// model da Classe Saida
 class Saida
 {
 
