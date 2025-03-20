@@ -14,8 +14,9 @@ $action = isset($_GET['action']) ? $_GET['action'] : $action;
 //parametro action vindo do Form da pagina entrada.php via POST com os dados do equipamento
 if ($action == 'insertEntry') {
 
-    //criação de objeto
-    $entrada = new Entrada();
+    
+    $entrada = new Entrada(); //criação de objeto
+    
     $entrada->__set('equipamento', $_POST['equipamento']);
     $entrada->__set('modelo', $_POST['modelo']);
     $entrada->__set('patrimonio', strval($_POST['patrimonio']));
@@ -38,8 +39,8 @@ if ($action == 'insertEntry') {
 //parametro action vindo do Form da pagina saida.php via POST com os dados do equipamento, finalidade de inserção no banco tb_saida e remoção do tb_estoque
 } else if ($action == 'insertExit') {
 
-    //criação de objeto
-    $saida = new Saida();
+    
+    $saida = new Saida(); //criação de objeto a partir da classe Saida
 
     $saida->__set('equipamento', $_POST['equipamento']);
     $saida->__set('modelo', $_POST['modelo']);
@@ -93,7 +94,7 @@ if ($action == 'insertEntry') {
 
     $key = new Entrada(); //criação de objeto  a partir da Classe Entrada
     $connection = new connection(); //criação de objeto de conexao
-    $key->__set('patrimonio', $_POST['search']); // insere o atributo patrimonio obtido por form para busca
+    $key->__set('patrimonio', trim($_POST['search'])); // insere o atributo patrimonio obtido por form para busca
 
     //criação do objeto a partir da classe Entradaservice, que envia a conexao e os dados a serem buscados no banco
     $entradaService = new EntradaService($connection, $key);
@@ -111,9 +112,9 @@ if ($action == 'insertEntry') {
 // parametro action vindo do FORM para leitura de 1 patrimonio na pagina busca.php, e enviado atraves de metodo post no input na area de Saida
 } else if ($action == 'readExit') {
 
-    $key = new Saida(); //criação de objeto  a partir da Classe Entrada
+    $key = new Saida(); //criação de objeto  a partir da Classe Saida
     $connection = new connection(); //criação de objeto de conexao
-    $key->__set('patrimonio', $_POST['search']); // insere o atributo patrimonio obtido por form para busca
+    $key->__set('patrimonio', trim($_POST['search'])); // insere o atributo patrimonio obtido por form para busca
 
      //criação do objeto a partir da classe Entradaservice, que envia a conexao e os dados a serem persistidos no banco
     $saidaService = new SaidaService($connection, $key);
