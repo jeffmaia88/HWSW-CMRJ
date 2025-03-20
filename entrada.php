@@ -1,10 +1,11 @@
 <?php
 session_start();
 
+//dados passados para superglobal para autenticação
 if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
     header('location: index.php?login=error2');
 }
-
+//dados passados para superglobal para armazenar nome do usuario e preencher input de responsavel.
 $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
 
 ?>
@@ -48,20 +49,21 @@ $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
     </nav>
 
    
-    <!--Corpo do Site -->
-    <!-- Links Laterais -->
+<!--Corpo do Site -->
+   <!-- Links Laterais -->
 
     <section id="home">
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-3">
                     <button class="btn btn-outline-primary mb-5 d-md-none  ml-3" data-toggle="collapse"
-                        data-target="#sidebarLinks" aria-expanded="false" aria-controls="sidebarLinks">
+                        data-target="#sidebarLinks" aria-expanded="false" aria-controls="sidebarLinks"> <!-- botão para responsividade -->
                         <span class="material-icons">
                             Expandir Menu
                         </span>
                     </button>
-                    <div class="collapse d-md-block" id="sidebarLinks">
+                    
+                    <div class="collapse d-md-block" id="sidebarLinks"> <!-- Div afetada pelo botão em responsividade -->
                         <ul class="list-group" id="list-links">
                             <li class="list-group-item ">
                                 <a href="entrada.php">Entrada de Patrimônio</a>
@@ -75,7 +77,9 @@ $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
                         </ul>
                     </div>
                 </div>
-                <!--Formulários -->
+
+    <!--Formulários -->
+        <!-- cabeçalho do formulario -->
                 <div class="col-md-9">
                     <div class="container pagina">
                         <div class="row">
@@ -85,10 +89,12 @@ $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
                                 </h4>
                                 <hr>
 
+         <!-- início do Formulario em 2 colunas -->
                                 <form method="post" action="controller.php?action=insertEntry">
-                                    <div class="row mb-3 d-flex tarefa"> <!-- linha -->
+                                    <div class="row mb-3 d-flex tarefa">
 
-                                        <div class="col-sm-6"> <!-- coluna da esquerda -->
+            <!-- coluna da esquerda -->
+                                        <div class="col-sm-6"> 
                                             <div class="form-group">
                                                 <label for="equip"> Equipamento: </label>
                                                 <select class="custom-select" name="equipamento" id="equip" required>
@@ -120,11 +126,10 @@ $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
                                                 <input type="checkbox" class="form-check-input" name="baixado" value="1" id="baixa">
                                                 <label for="baixa" class="form-check-label">Equipamento Baixado </label>                                                
                                             </div>
-
-
                                         </div>
-                                    
-                                        <div class="col-sm-6"> <!-- coluna da direita -->
+
+            <!-- coluna da direita -->                        
+                                        <div class="col-sm-6"> 
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-3">Setor Origem:</label>
@@ -143,9 +148,11 @@ $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
                                         </div>
                                         <button class="btn btn-success ml-auto mt-4">Cadastrar Entrada</button>
                                     </div>
-                            </form>
+    <!-- Fim do Formulario-->  </form>
                         </div>
                     </div>
+
+    <!-- lógica para mensagem de dados enviados, recebe via GET um parametro vindo do controller -->
                     <?php if (isset($_GET['insert']) && $_GET['insert'] == 1) { ?>
                         <div class="bg-primary pt-2 text-white d-flex justify-content-center mt-5">
                             <h5> Entrada de equipamento realizada com sucesso</h5>

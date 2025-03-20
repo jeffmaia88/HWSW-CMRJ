@@ -1,11 +1,14 @@
 <?php
 session_start();
-
+//dados passados para superglobal para autenticação
 if (!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
     header('location: index.php?login=error2');
 }
-
+//dados passados pela superglobal para recebimento dos resultados da busca vindo do banco
+//Listagem dinâmica do select
 $listagem = isset($_SESSION['listagem']) ? $_SESSION['listagem'] : [];
+
+//busca do input
 $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
 
 ?>
@@ -35,7 +38,7 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
 
 <body>
 
-    <!--Cabeçalho e Barra Superior-->
+<!--Cabeçalho e Barra Superior-->
     <nav class="navbar navbar-expand-sm navbar-nav " id="upbar">
         <div class="container">
             <a href="">
@@ -53,19 +56,20 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
         </div>
     </nav>
 
-    <!--Corpo do Site -->
+<!--Corpo do Site -->
     <!-- Links Laterais -->
     <section id="home">
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-3">
                     <button class="btn btn-outline-primary mb-5 d-md-none  ml-3" data-toggle="collapse"
-                        data-target="#sidebarLinks" aria-expanded="false" aria-controls="sidebarLinks">
+                        data-target="#sidebarLinks" aria-expanded="false" aria-controls="sidebarLinks"> <!-- botão para responsividade -->
                         <span class="material-icons">
                             Expandir Menu
                         </span>
                     </button>
-                    <div class="collapse d-md-block" id="sidebarLinks">
+
+                    <div class="collapse d-md-block" id="sidebarLinks"> <!-- Div afetada pelo botão em responsividade -->
                         <ul class="list-group" id="list-links">
                             <li class="list-group-item ">
                                 <a href="entrada.php">Entrada de Patrimônio</a>
@@ -79,7 +83,7 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                         </ul>
                     </div>
                 </div>
-                <!--Formulários -->
+            <!-- cabeçalho do corpo do texto-->    
                 <div class="col-md-9">
                     <div class="container pagina">
                         <div class="row">
@@ -88,7 +92,7 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                     <img src="img/list.png" class="pl-4 mb-2">
                                 </h4>
                                 <hr />
-
+            <!-- Select para listagem de patrimonios-->
                                 <div class="row">
                                     <div class="col-md-3 d-flex pt-5">
                                         <select class="custom-select inputs ml-auto" name="equipamento" id="equip"
@@ -106,6 +110,7 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                             </optgroup>
                                         </select>
                                     </div>
+            <!-- input para busca de um patrimonio apenas -->                        
                                     <div class="col-md-5 ml-5 ">
                                         <form method="post" action="controller.php?action=read">
                                             <div class="d-flex pt-5 pl-5">
@@ -119,7 +124,7 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                             </div>
                                         </form>
                                     </div>
-
+            <!-- botão de impressão -->
                                     <div class="col-md-2 mt-5 ml-auto ">
                                         <div class="d-flex pl-2">
                                             <button class="btn btn-link ml-4 pl-5" onclick="imprimir('table')">
@@ -127,17 +132,11 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                                 Imprimir
                                             </button>
                                         </div>
-
-
                                     </div>
-
-
-
                                 </div>
-
                             </div>
 
-
+            <!-- Área de montadem de Tabelas Dinâmicas-->
                             <table class="table table-striped small-table">
                                 <tr>
                                     <th>Equipamento</th>
@@ -147,10 +146,8 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                     <th>Baixa</th>
                                     <th>Remover</th>
                                 </tr>
-
-                                <?php if ($busca != []) { ?>
-                                                                 
-                                   
+                            <!-- Lógica para mostrar tabela apenas em caso de busca possuir valores-->
+                                
                                    <?php if ($busca != []) { ?>
                                     <tr>
                                         <td><?= $busca->equipamento?></td>
@@ -163,10 +160,10 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                         </td>
                                     </tr>
                                 <?php } ?>
-                                <?php } ?>
-
+                                
+                            <!-- Fim da Área de Busca pelo input -->            
                                                                           
-
+                            <!-- Lógica para mostrar tabela após obter dados vindos do banco a partir do onchange do select-->            
                                 <?php foreach ($listagem as $index => $item) { ?>
 
                                     <tr>
@@ -180,14 +177,8 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                         </td>
                                     </tr>
                                 <?php } ?>
-
-
-
+                            <!-- Fim da Área de Tabela pelo Select --> 
                             </table>
-
-
-
-
                         </div>
                     </div>
                 </div>

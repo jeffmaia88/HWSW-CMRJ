@@ -1,10 +1,10 @@
 <?php 
     session_start();
-
+//dados passados para superglobal para autenticação
     if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
         header('location: index.php?login=error2');
     }
-    
+//dados passados para superglobal para armazenar nome do usuario e preencher input de responsavel.    
     $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
 
 ?>
@@ -23,12 +23,12 @@
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <title>Estoque DTI - Entrada de Patrimônio</title>
+    <title>Estoque DTI - Saída de Patrimônio</title>
 </head>
 
 <body>
 
-    <!--Cabeçalho e Barra Superior-->
+<!--Cabeçalho e Barra Superior-->
     <nav class="navbar navbar-expand-sm navbar-nav " id="upbar">
         <div class="container">
             <a href="" class="link-cmrj ">
@@ -50,19 +50,22 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-    <!--Corpo do Site -->
+<!--Corpo do Site -->
     <!-- Links Laterais -->
      
     <section id="home">
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-3">
-                    <button class="btn btn-outline-primary mb-5 d-md-none  ml-3" data-toggle="collapse" data-target="#sidebarLinks" aria-expanded="false"  aria-controls="sidebarLinks">
+
+                    <button class="btn btn-outline-primary mb-5 d-md-none  ml-3" data-toggle="collapse" 
+                    data-target="#sidebarLinks" aria-expanded="false"  aria-controls="sidebarLinks"> <!-- botão para responsividade -->
                      <span class="material-icons">
                         Expandir Menu
                     </span>
                     </button>
-                    <div class="collapse d-md-block" id="sidebarLinks">
+
+                    <div class="collapse d-md-block" id="sidebarLinks"> <!-- Div afetada pelo botão em responsividade -->
                         <ul class="list-group" id="list-links">
                             <li class="list-group-item ">
                                 <a href="entrada.php">Entrada de Patrimônio</a>
@@ -78,8 +81,9 @@
                     </div>
 
                 </div>
-                <!--Formulários -->
-                <div class="col-md-9">
+    <!--Formulários -->
+         <!-- cabeçalho do formulario -->
+                 <div class="col-md-9">
                     <div class="container pagina">
                         <div class="row">
                             <div class="col">
@@ -87,11 +91,11 @@
                                     <img src="img/sub.png" class="pl-4 mb-2">
                                 </h4>
                                 <hr>
-
+        <!-- início do Formulario em 2 colunas -->
                                 <form method="post" action="controller.php?action=insertExit">
-                                    <div class="row mb-3 d-flex tarefa"> <!-- linha -->
-
-                                        <div class="col-sm-6"> <!-- coluna da esquerda -->
+                                    <div class="row mb-3 d-flex tarefa">
+            <!-- coluna da esquerda -->
+                                        <div class="col-sm-6"> 
                                             <div class="form-group">
                                                 <label for="equip"> Equipamento: </label>
                                                
@@ -109,9 +113,9 @@
                                             </div>
                                             
                                             
-
+            <!-- coluna da direita -->
                                         </div>
-                                        <div class="col-sm-6"> <!-- coluna da direita -->
+                                        <div class="col-sm-6"> 
 
                                             <div class="form-group">
                                                 <label for="Respons" class="mr-3">Setor Destino:</label>

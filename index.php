@@ -20,7 +20,7 @@
 
 <body>
 
-    <!--Cabeçalho e Barra Superior-->
+<!--Cabeçalho e Barra Superior-->
     <nav class="navbar navbar-expand-sm navbar-nav" id="upbar">
         <div class="container">
             <a href="#" id="link-cmrj">
@@ -31,6 +31,7 @@
         </div>       
     </nav>
 
+<!-- Card de Login e Senha -->
     <div class="container">
         <div class="row">
             <div class="card-login" id="card-login">
@@ -47,13 +48,14 @@
                                 <input type="password" class="form-control" placeholder="Senha" name="password">
                         </div>
 
+<!-- Msgns de Erros de Autenticação, Dados Inválidos -->
                         <?php if(isset($_GET['login']) && $_GET['login'] == 'error') { ?>
                             <div class="text-danger">
                                 Usuário ou senha inválidos
                             </div>
 
                         <?php } ?>
-
+<!-- Msgns de Erros de Autenticação, Tentativa de login sem preenchimento de Login e Senha -->
                         <?php if(isset($_GET['login']) && $_GET['login'] == 'error2') { ?>
                             <div class="text-danger">
                                 Faça Login antes de acessar o Sistema de Controle de Patrimônio

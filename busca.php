@@ -1,11 +1,13 @@
 <?php 
     session_start();
-
+//dados passados para superglobal para autenticação
     if(!isset($_SESSION['autenticado']) || $_SESSION['autenticado'] != 'SIM') {
         header('location: index.php?login=error2');
     }
-    
+//dados passados pela superglobal para recebimento dos resultados da busca vindo do banco
+//entrada
     $search = isset($_SESSION['searchEntry']) ? $_SESSION['searchEntry'] : [];
+//saida
     $saida = isset($_SESSION['searchExit']) ? $_SESSION['searchExit'] : [];
 
 ?>
@@ -35,7 +37,7 @@
 
 <body>
 
-    <!--Cabeçalho e Barra Superior-->
+<!--Cabeçalho e Barra Superior-->
     <nav class="navbar navbar-expand-sm navbar-nav " id="upbar">
         <div class="container">
             <a href="">
@@ -53,19 +55,21 @@
         </div>
     </nav>
 
-    <!--Corpo do Site -->
+<!--Corpo do Site -->
     <!-- Links Laterais -->
     <section id="home">
         <div class="container mt-5">
             <div class="row">
                 <div class="col-md-3">
+
                     <button class="btn btn-outline-primary mb-5 d-md-none  ml-3" data-toggle="collapse"
-                        data-target="#sidebarLinks" aria-expanded="false" aria-controls="sidebarLinks">
+                        data-target="#sidebarLinks" aria-expanded="false" aria-controls="sidebarLinks"> <!-- botão para responsividade -->
                         <span class="material-icons">
                             Expandir Menu
                         </span>
                     </button>
-                    <div class="collapse d-md-block" id="sidebarLinks">
+
+                    <div class="collapse d-md-block" id="sidebarLinks"> <!-- Div afetada pelo botão em responsividade -->
                         <ul class="list-group" id="list-links">
                             <li class="list-group-item ">
                                 <a href="entrada.php">Entrada de Patrimônio</a>
@@ -79,7 +83,9 @@
                         </ul>
                     </div>
                 </div>
-                <!--Formulários -->
+
+    <!--Formulários -->
+        <!-- cabeçalho do formulario -->
                 <div class="col-md-9">
                     <div class="container pagina">
                         <div class="row">
@@ -91,6 +97,7 @@
 
                                 <div class="row pt-5">
                                     <div class=" col-md-12 ">
+                 <!-- início do Formulario de entrada -->
                                         <form method="post" action="controller.php?action=readEntry">
                                             <div class="d-flex ">
                                                 <div class="ml-auto">
@@ -105,6 +112,7 @@
                                     </div>
 
                                 </div>
+                <!-- Área de montagem da Tabela -->
 
                                 <div class="row mt-3">
                                     <div class="col-md-12">
@@ -117,7 +125,7 @@
                                                     <th>Origem</th>
                                                     <th>Responsável</th>
                                                     <th>Entrada</th>
-                                                    
+                    <!-- Tabela Dinâmica montada com os dados recebidos pela superglobal session na variavel $search -->                                
                                                 </tr>
 
                                                 <?php foreach($search as $index => $item) { ?>
@@ -131,34 +139,24 @@
                                                 </tr>                                                                                  
 
                                                 <?php } ?>
-                                            </table>
-                                        
-                                            
-
-
-
+                                            </table>                                  
+                                         
                                     </div>
-
-
                                 </div>
-
-
-
                             </div>
-
-
                         </div>
                         
-                                                
+                    <!-- início da area do Formulario de Saída -->                            
                         <div class="row" id="search-exit">
                             <div class="col-md-12">
                                 <h5>Saída de Patrimônio
                                 <img src="img/exit.png" class="pb-2">
                                 </h5>
-                                <hr id="row-search">
-
+                                <hr id="row-search">                                                    
                                 <div class="row mt-5">
                                     <div class=" col-md-12 ">
+
+                        <!-- início do Formulario de Saída -->    
                                         <form method="post" action="controller.php?action=readExit">
                                             <div class="d-flex ">
                                                 <div class="ml-auto">
@@ -171,14 +169,13 @@
                                             </div>
                                         </form>
                                     </div>
-
                                 </div>
 
                                 <div class="row mt-3">
                                     <div class="col-md-12">
 
+                            <!-- Área de montagem das Tabelas -->
 
-                                        
                                             <table class="table table-striped small-table">
                                                 <tr>
                                                     <th>Equipamento</th>
@@ -189,7 +186,7 @@
                                                     <th>Saida</th>
                                                     
                                                 </tr>
-
+                            <!-- Tabela Dinâmica montada com os dados recebidos pela superglobal session na variavel $saida-->                               
                                             <?php foreach($saida as $index => $item) { ?>
                                                 <tr>
                                                     <td><?= $item->equipamento ?> </td>
@@ -201,34 +198,19 @@
                                                 </tr>                                                                                  
 
                                                 <?php } ?>
-                                            </table> 
-                                        
-                                              
-
-                                        
-
+                                            </table>                                       
+                                                                                      
                                     </div>
-
-
                                 </div>
-
-
-
                             </div>
-
-
                         </div>
-                     
-
+              
                     </div>
                 </div>
             </div>
 
         </div>
-
-
         </div>
-
 
     </section>
 
