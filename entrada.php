@@ -33,7 +33,7 @@ $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
     <!--Cabeçalho e Barra Superior-->
     <nav class="navbar navbar-expand-sm navbar-nav " id="upbar">
         <div class="container">
-            <a href="" class="link-cmrj ">
+            <a href="entrada.php" class="link-cmrj ">
                 <img src="img/logo.jpg">
                 <h4 class="d-inline" id="logoname">Hardware - Sistema de Estoque CMRJ</h4>
             </a>
