@@ -50,13 +50,35 @@ class EntradaService
 	//método de busca na tb_estoque e retorno de 1 resultado para o <table> em listar.php
 	public function read()
 	{
-		$query = 'select equipamento, modelo, patrimonio, data_entrada,baixado from tb_estoque where patrimonio = :search';
+		// Primeiro tenta buscar com o valor tratado (prefixo 88)
+		$query = 'SELECT equipamento, modelo, patrimonio, data_entrada, baixado 
+				  FROM tb_estoque 
+				  WHERE patrimonio LIKE :search';
+	
 		$stmt = $this->conexao->prepare($query);
-		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
+		$stmt->bindValue(':search', '%' . $this->entrada->__get('patrimonio') . '%');
 		$stmt->execute();
-		return $stmt->fetch(PDO::FETCH_OBJ);
+	
+		$result = $stmt->fetch(PDO::FETCH_OBJ);
+	
+		// Se não encontrar, tenta buscar sem o prefixo 88
+		if (!$result) {
+			$query = 'SELECT equipamento, modelo, patrimonio, data_entrada, baixado 
+					  FROM tb_estoque 
+					  WHERE patrimonio LIKE :search';
+	
+			$stmt = $this->conexao->prepare($query);
+			
+			// Remove o prefixo "88" (se tiver) e tenta novamente
+			$valorSemPrefixo = preg_replace('/^88/', '', $this->entrada->__get('patrimonio'));
+			$stmt->bindValue(':search', '%' . $valorSemPrefixo . '%');
+			$stmt->execute();
+	
+			$result = $stmt->fetch(PDO::FETCH_OBJ);
+		}
+	
+		return $result;
 	}
-
 	
 	//método de busca na tb_entrada e retorno para o <table> na area entrada em busca.php
 	public function readEntry()

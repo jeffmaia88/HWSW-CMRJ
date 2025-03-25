@@ -63,9 +63,36 @@ if ($action == 'insertEntry') {
 // parametro action vindo do FORM para leitura de 1 patrimonio na pagina listar.php, e enviado atraves de metodo post no input  
 } else if ($action == 'read') {
 
+    $key = new Entrada(); // Criação de objeto a partir da Classe Entrada
+    $connection = new connection(); // Criação de objeto de conexão
     
-    $key = new Entrada(); //criação de objeto  a partir da Classe Entrada
+    // Tratamento para adicionar o prefixo "88" se o valor for menor que 6 dígitos
+    $patrimonio = trim($_POST['search']);
+    if (strlen($patrimonio) < 7 && strpos($patrimonio, '88') !== 0) {
+        $patrimonio = '88' . $patrimonio;
+    }
+
+    $key->__set('patrimonio', $patrimonio); // Insere o valor tratado para busca
+
+    $entradaService = new EntradaService($connection, $key);
+    $search = $entradaService->read();
+
+    // Controle de decisão para o campo BAIXA na <table> de equipamentos em listar.php
+    if ($search != [] && $search->baixado == 0) {
+        $search->baixado = 'NÃO';
+    } else if ($search != [] && $search->baixado == 1) {
+        $search->baixado = "SIM";
+    }
+
+    // Armazenamento na superglobal Session do objeto obtido vindo de tb_estoque
+    session_start();
+    $_SESSION['search'] = $search;
+
+    header("Location: listar.php");
+    
+    /*$key = new Entrada(); //criação de objeto  a partir da Classe Entrada
     $connection = new connection();//criação de objeto de conexao
+    
     $key->__set('patrimonio', trim($_POST['search'])); // insere o atributo patrimonio obtido por form para busca
 
     $entradaService = new EntradaService($connection, $key); // criação de objeto entradaservice
@@ -74,18 +101,19 @@ if ($action == 'insertEntry') {
     $search = $entradaService->read();
 
     // controle de decisão para o campo BAIXA na <table> de equipamentos em listar.php
-    if($search->baixado == 0) {
+    if($search != [] and $search->baixado == 0) {
             $search->baixado = 'NÃO';
-        }else {
+        }
+    else if($search != [] and $search->baixado == 1){
             $search->baixado = "SIM";
-        } 
+        }
     
 
     // armazenamento na superglobal Session do objeto obtido vindo de tb_estoque
     session_start();
     $_SESSION['search'] = $search;
 
-    header("Location: listar.php");
+    header("Location: listar.php"); */
 
 
 
