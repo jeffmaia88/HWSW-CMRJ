@@ -82,14 +82,38 @@ class EntradaService
 	
 	//método de busca na tb_entrada e retorno para o <table> na area entrada em busca.php
 	public function readEntry()
-	{
+{
+    // Primeiro tenta buscar com o valor tratado (prefixo 88)
+    $query = 'SELECT id, equipamento, modelo, patrimonio, origem, responsavel, data_entrada 
+              FROM tb_entrada 
+              WHERE patrimonio LIKE :search 
+              ORDER BY data_entrada DESC';
 
-		$query = 'select id,equipamento, modelo, patrimonio,origem,responsavel,data_entrada from tb_entrada where patrimonio = :search order by data_entrada DESC';
-		$stmt = $this->conexao->prepare($query);
-		$stmt->bindValue(':search', $this->entrada->__get('patrimonio'));
-		$stmt->execute();
-		return $stmt->fetchAll(PDO::FETCH_OBJ);
-	}
+    $stmt = $this->conexao->prepare($query);
+    $stmt->bindValue(':search', '%' . $this->entrada->__get('patrimonio') . '%');
+    $stmt->execute();
+
+    $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+
+    // Se não encontrar, tenta buscar sem o prefixo 88
+    if (!$result) {
+        $query = 'SELECT id, equipamento, modelo, patrimonio, origem, responsavel, data_entrada 
+                  FROM tb_entrada 
+                  WHERE patrimonio LIKE :search 
+                  ORDER BY data_entrada DESC';
+
+        $stmt = $this->conexao->prepare($query);
+
+        // Remove o prefixo "88" (se tiver) e tenta novamente
+        $valorSemPrefixo = preg_replace('/^88/', '', $this->entrada->__get('patrimonio'));
+        $stmt->bindValue(':search', '%' . $valorSemPrefixo . '%');
+        $stmt->execute();
+
+        $result = $stmt->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    return $result;
+}
 
 	//método de busca na tb_estoque com base no value do option do select em listar.php
 	public function filter()

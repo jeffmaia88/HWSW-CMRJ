@@ -90,51 +90,31 @@ if ($action == 'insertEntry') {
 
     header("Location: listar.php");
     
-    /*$key = new Entrada(); //criação de objeto  a partir da Classe Entrada
-    $connection = new connection();//criação de objeto de conexao
-    
-    $key->__set('patrimonio', trim($_POST['search'])); // insere o atributo patrimonio obtido por form para busca
-
-    $entradaService = new EntradaService($connection, $key); // criação de objeto entradaservice
-    $entradaService->read();
-
-    $search = $entradaService->read();
-
-    // controle de decisão para o campo BAIXA na <table> de equipamentos em listar.php
-    if($search != [] and $search->baixado == 0) {
-            $search->baixado = 'NÃO';
-        }
-    else if($search != [] and $search->baixado == 1){
-            $search->baixado = "SIM";
-        }
-    
-
-    // armazenamento na superglobal Session do objeto obtido vindo de tb_estoque
-    session_start();
-    $_SESSION['search'] = $search;
-
-    header("Location: listar.php"); */
-
-
-
+   
 // parametro action vindo do FORM para leitura de 1 patrimonio na pagina busca.php, e enviado atraves de metodo post no input  na area de Entrada
 } else if ($action == 'readEntry') {
 
-    $key = new Entrada(); //criação de objeto  a partir da Classe Entrada
+    $key = new Entrada(); //criação de objeto  a partir da Classe Saida
     $connection = new connection(); //criação de objeto de conexao
-    $key->__set('patrimonio', trim($_POST['search'])); // insere o atributo patrimonio obtido por form para busca
 
-    //criação do objeto a partir da classe Entradaservice, que envia a conexao e os dados a serem buscados no banco
+    // Tratamento para adicionar o prefixo "88" se o valor for menor que 6 dígitos
+    $patrimonio = trim($_POST['search']);
+    if (strlen($patrimonio) < 7 && strpos($patrimonio, '88') !== 0) {
+        $patrimonio = '88' . $patrimonio;
+    }
+
+    $key->__set('patrimonio', $patrimonio); // Insere o valor tratado para busca
+ 
+
     $entradaService = new EntradaService($connection, $key);
-    $entradaService->readEntry();
-
     $search = $entradaService->readEntry();
 
-    // armazenamento na superglobal Session do objeto obtido na tb_entrada
+    // Armazenamento na superglobal Session do objeto obtido vindo de tb_estoque
     session_start();
     $_SESSION['searchEntry'] = $search;
 
     header("Location: busca.php");
+
 
   
 // parametro action vindo do FORM para leitura de 1 patrimonio na pagina busca.php, e enviado atraves de metodo post no input na area de Saida
@@ -142,7 +122,15 @@ if ($action == 'insertEntry') {
 
     $key = new Saida(); //criação de objeto  a partir da Classe Saida
     $connection = new connection(); //criação de objeto de conexao
-    $key->__set('patrimonio', trim($_POST['search'])); // insere o atributo patrimonio obtido por form para busca
+    
+
+    // Tratamento para adicionar o prefixo "88" se o valor for menor que 6 dígitos
+    $patrimonio = trim($_POST['search']);
+    if (strlen($patrimonio) < 7 && strpos($patrimonio, '88') !== 0) {
+        $patrimonio = '88' . $patrimonio;
+    }
+
+    $key->__set('patrimonio', $patrimonio); // Insere o valor tratado para busca
 
      //criação do objeto a partir da classe Entradaservice, que envia a conexao e os dados a serem persistidos no banco
     $saidaService = new SaidaService($connection, $key);

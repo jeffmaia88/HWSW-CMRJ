@@ -28,13 +28,38 @@ class SaidaService
 
 	//método de busca na tb_saida e retorno para o <table> na area saida em busca.php
 	public function readExit()
-	{//read
 
-		$query = 'select id,equipamento,modelo,patrimonio,destino,responsavel,data_saida from tb_saida where patrimonio = :search';
+	{
+		// Primeiro tenta buscar com o valor tratado (prefixo 88)
+		$query = 'SELECT id, equipamento, modelo, patrimonio, destino, responsavel, data_saida
+				  FROM tb_saida
+				  WHERE patrimonio LIKE :search 
+				  ORDER BY data_saida DESC';
+	
 		$stmt = $this->conexao->prepare($query);
-		$stmt->bindValue(':search', $this->saida->__get('patrimonio'));
+		$stmt->bindValue(':search', '%' . $this->saida->__get('patrimonio') . '%');
 		$stmt->execute();
-		return $stmt->fetchAll(PDO::FETCH_OBJ);
+	
+		$result = $stmt->fetchAll(PDO::FETCH_OBJ);
+	
+		// Se não encontrar, tenta buscar sem o prefixo 88
+		if (!$result) {
+			$query = 'SELECT id, equipamento, modelo, patrimonio, destino, responsavel, data_saida
+					  FROM tb_saida
+					  WHERE patrimonio LIKE :search 
+					  ORDER BY data_saida DESC';
+	
+			$stmt = $this->conexao->prepare($query);
+	
+			// Remove o prefixo "88" (se tiver) e tenta novamente
+			$valorSemPrefixo = preg_replace('/^88/', '', $this->saida->__get('patrimonio'));
+			$stmt->bindValue(':search', '%' . $valorSemPrefixo . '%');
+			$stmt->execute();
+	
+			$result = $stmt->fetchAll(PDO::FETCH_OBJ);
+		}
+	
+		return $result;
 	}
 
 	//método de remoção da tb_estoque
