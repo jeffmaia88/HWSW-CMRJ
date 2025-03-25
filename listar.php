@@ -159,7 +159,8 @@ $busca = isset($_SESSION['search']) ? $_SESSION['search'] : [];
                                             <i class="fa-solid fa-trash pl-4"></i>
                                         </td>
                                     </tr>
-                                <?php } ?>
+                                <?php } ?>                             
+                                
                                 
                             <!-- Fim da Área de Busca pelo input -->            
                                                                           
