@@ -2,7 +2,7 @@
 const modelos = {
     'Computador': ['Daten', 'Dell', 'Lenovo', 'Montado', 'Positivo'],
     'Monitor': ['AOC', 'Benq', 'Daten', 'Dell', 'LG', 'Philips', 'Samsung'],
-    'Notebook': ['Acer', 'Itautec','Lenovo'],
+    'Notebook': ['Acer', 'Itautec','Lenovo', 'Sony'],
     'Impressora': ['Brother', 'Epson', 'HP', 'Lexmark']
 };
 
@@ -32,4 +32,5 @@ equipSelect.addEventListener('change', function() {
 document.addEventListener('DOMContentLoaded', initSelects);
 
 
+ 
 

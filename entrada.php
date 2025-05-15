@@ -118,8 +118,7 @@ $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
 
                                             <div class="form-group">
                                                 <label for="Patrim" class="mr-3">Patrimônio: </label>
-                                                <input type="number" class="form-control" name="patrimonio" minlength="7"
-                                                    maxlength="7" required>
+                                                <input type="text" class="form-control" name="patrimonio" minlength="5" required>
                                             </div>
 
                                             <div class="form-group ml-3 p-1">
