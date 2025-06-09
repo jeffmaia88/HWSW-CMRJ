@@ -1,6 +1,6 @@
 //Modelos exibidos como opção no Select da página entrada.php
 const modelos = {
-    'Computador': ['Daten', 'Dell', 'Lenovo', 'Montado', 'Positivo'],
+    'Computador': ['Auria 2', 'Auria 4', 'Daten', 'Dell', 'Lenovo', 'Montado', 'Positivo', 'Quiron'],
     'Monitor': ['AOC', 'Benq', 'Daten', 'Dell', 'LG', 'Philips', 'Samsung'],
     'Notebook': ['Acer', 'Itautec','Lenovo', 'Sony'],
     'Impressora': ['Brother', 'Epson', 'HP', 'Lexmark']
