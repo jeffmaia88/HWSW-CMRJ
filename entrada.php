@@ -100,9 +100,10 @@ $usuario = isset($_SESSION['name']) ? $_SESSION['name'] : [];
                                                 <select class="custom-select" name="equipamento" id="equip" required>
                                                     <option selected disabled>Selecione o Equipamento</option>
                                                     <option value="Computador">Computador</option>
-                                                    <option value="Monitor">Monitor</option>
-                                                    <option value="Notebook">Notebook</option>
                                                     <option value="Impressora">Impressora</option>
+                                                    <option value="Monitor">Monitor</option>
+                                                    <option value="Notebook">Notebook</option>                                                    
+                                                    <option value="Tablet">Tablet</option>
                                                 </select>
                                             </div>
 

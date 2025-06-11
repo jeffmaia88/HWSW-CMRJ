@@ -2,8 +2,10 @@
 const modelos = {
     'Computador': ['Auria 2', 'Auria 4', 'Daten', 'Dell', 'Lenovo', 'Montado', 'Positivo', 'Quiron'],
     'Monitor': ['AOC', 'Benq', 'Daten', 'Dell', 'LG', 'Philips', 'Samsung'],
-    'Notebook': ['Acer', 'Itautec','Lenovo', 'Sony'],
-    'Impressora': ['Brother', 'Epson', 'HP', 'Lexmark']
+    'Notebook': ['Acer','Daten', 'Itautec','Lenovo', 'Sony'],
+    'Impressora': ['Brother', 'Epson', 'HP', 'Lexmark'],
+    'Tablet': ['Motorola']
+    
 };
 
 //função que cria dinamicamente o select modelos a partir da escolha no select equipamento
